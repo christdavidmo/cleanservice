@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/navPublic.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <title>Document</title>
+
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+  
+    .En-tete-page{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      height: 6vh;
+      
+    }
+
+    .En-tete-page-logo{
+      color: rgb(15, 147, 254);
+      font-size: 20Px;
+      padding-right: 10px;
+    }
+
+    .En-tete-page-number{
+      font-size: 25Px;
+      background-color: rgb(222, 255, 79);
+      padding: 10px 30px;
+      color: rgb(15, 147, 254);
+    }
+    .navbar{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      
+  
+      background-color: rgb(15, 147, 254);
+      padding: 15px;
+    }
+  
+    .logo-navbar{
+     position: absolute;
+     left: 10px; 
+    }
+
+    .logo-navbar img{
+      width: 100%; 
+      height: 95px;
+     
+    }
+    .navbar ul{
+      display: flex;
+      align-items: center;
+      list-style: none;
+    }
+  
+    .navbar li{
+      margin-right: 25px;
+      font-size: 20px;
+    }
+    .navbar a{
+      text-decoration: none;
+      color: white;
+    }
+  
+    .navbar a:hover{
+      color: rgb(222, 255, 79);
+    }
+  
+    .reserver-bouton a{
+      color: black;
+    }
+    .reserver-bouton a:hover{
+      color: rgb(15, 147, 254);
+    }
+    .reserver-bouton{
+      padding: 5px;
+      background-color: rgb(222, 255, 79);
+    }
+  
+  
+    .menu-over{
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 19;
+  
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+    }
+  
+    .menu-burger{
+      display: none;
+      position: absolute;
+      right:  20px; 
+      color: white;
+    }
+
+    .menu-burger i{
+      font-size: 35px;
+    }
+  
+    @media screen and (max-width: 768px) {
+      
+      .En-tete-page{
+        justify-content: space-between;
+      }
+  
+      .En-tete-page-logo{
+        font-size: 20Px;
+        margin-left: 5PX;
+      }
+  
+      .En-tete-page-number{
+        font-size: 20Px;
+        padding: 0px;
+        margin-right: 5px;
+        background-color: white;
+      }
+
+      .navbar{
+        padding: 35px 15px;
+      }
+
+      .logo-navbar{
+        position: absolute;
+        left: 3px; 
+      }
+
+      .navbar .menu-lu {
+        display: none;
+      }
+
+      .navbar .menu-lu.active{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        flex-direction: column;
+        width: 55%;
+        height: 100%;
+        z-index: 20;
+        top: 0;
+        right: 0;
+
+        background-color: rgb(15, 147, 254);
+        box-shadow: 0 11px 11px rgb(23, 23, 22);
+        margin: 0;
+      }
+
+      .menu-lu li{
+        margin-bottom: 30px;
+        font-size: 35px;
+      }
+
+      .navbar .menu-burger{
+        display: block;
+        cursor: pointer;
+      }
+
+      .navbar .menu-over.active {
+        display: block;
+      }
+    }
+  
+  </style>
+</head>
+<body>
+
+    <div class="En-tete-page"> 
+      <div class="En-tete-page-logo"><i class="fa-brands fa-facebook-f"></i> <i class="fa-brands fa-tiktok"></i> </div>
+
+      <div class="En-tete-page-number">77 457 78 90</div>
+    </div>
+
+      <nav class="navbar">
+
+        <div class="logo-navbar">
+          <a href=""><img src="/static/images/logo.png" alt="logo"></a>
+        </div>
+
+        <div class="menu-over" id="menu-over" onclick="closeMenu()"> </div>
+
+        <div class="menu-burger" id="menu-burger" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="menu-lu" id="menu-lu">
+          <li> <a href="{{ url_for('main.index') }}"> Accueil</a></li>
+          <li> <a href="{{ url_for('main.AboutUs') }}"> À propos</a></li>
+         
+          <li> <a href="{{ url_for('main.Services') }}"> Services</a></li> 
+          <li> <a href=""> FAQ</a></li>
+          <li> <a href="">Contact</a></li>
+          <li class="reserver-bouton"> <a href="">Réserver</a></li>
+        </ul>
+
+      </nav>
+
+
+
+      <script>
+        function toggleMenu() {
+          const menuL = document.getElementById('menu-lu');
+          const menuB = document.getElementById('menu-burger');
+          const menuOver = document.getElementById('menu-over');
+
+          menuL.classList.toggle("active");
+          menuB.classList.toggle("active");
+          menuOver.classList.toggle("active");
+        }
+
+        function closeMenu(){
+          const menuL = document.getElementById('menu-lu');
+          const menuB = document.getElementById('menu-burger');
+          const menuOver = document.getElementById('menu-over');
+
+          menuL.classList.remove("active");
+          menuB.classList.remove("active");
+          menuOver.classList.remove("active");
+        }
+       
+
+       
+      </script>
+     
+</body>
+</html>

@@ -1,0 +1,433 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.image{
+
+    width: 100%;
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+    background-image: url(/static/images/Design.png);
+    background-attachment: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.paragraphe1{
+    font-size: 60px;
+    text-transform: uppercase;
+    color: white;
+}
+
+
+.paragraphe2{
+    font-size: 30px;
+    color: white;
+}
+
+.index-contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+    height: 15vh;
+    /* background-color: antiquewhite; */
+}
+
+
+.index-pourquoi_nous{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 10%;
+    background-color: rgb(222, 255, 79);
+    color: rgb(15, 147, 254);
+    height: 50vh;
+}
+
+.index-pourquoi_nous p{
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.container-index-pourquoi_nous{
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: bold;
+    gap: 60px;
+
+}
+
+.case{
+    font-size: 25px;
+}
+
+
+
+
+/* ===========  partie de nos services ============== */
+.index-services{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin-bottom: 10%;
+}
+
+.index-services-title{
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.separate-line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.line1,.line2,.line3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.part1,.part2{ 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 500px;
+    height: 20vh;
+}
+
+.line1-p1{
+    display: flex;
+    background-color: pink;
+}
+.line1-p2{
+    display: flex;
+    background-color: brown;
+}
+
+.line1-p1 .coté1{
+    text-align: center;
+    flex: 1;
+    /* background-color: rgb(121, 119, 119); */
+}
+.line1-p1 .coté2{
+   flex: 1;
+   background-image: url(/static/images/homme-nettoyage.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 20vh;
+}
+
+
+.line1-p2 .coté1{
+    text-align: center;
+    flex: 1;
+    /* background-color: rgb(121, 119, 119); */
+}
+.line1-p2 .coté2{
+   flex: 1;
+   background-image: url(/static/images/homme-nettoyage.png);
+       background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 20vh;
+}
+
+
+
+
+.line2-p1{
+    background-color: chartreuse;
+}
+.line2-p2{
+    background-color: blueviolet;
+}
+
+.line2-p1 .coté1{
+    text-align: center;
+    flex: 1;
+    /* background-color: rgb(121, 119, 119); */
+}
+.line2-p1 .coté2{
+   flex: 1;
+   background-image: url(/static/images/homme-nettoyage.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 20vh;
+}
+
+.line2-p2 .coté1{
+    text-align: center;
+    flex: 1;
+    /* background-color: rgb(121, 119, 119); */
+}
+.line2-p2 .coté2{
+   flex: 1;
+    background-image: url(/static/images/homme-nettoyage.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 20vh;
+}
+
+
+
+
+.line3-p1{
+    background-color: bisque;
+}
+.line3-p2{
+    background-color: darkblue;
+}
+.line3-p2 .coté1{
+    text-align: center;
+    flex: 1;
+    /* background-color: rgb(121, 119, 119); */
+}
+.line3-p2 .coté2{
+   flex: 1;
+   background-image: url(/static/images/homme-nettoyage.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 20vh;
+}
+
+.line3-p1 .coté1{
+    text-align: center;
+    flex: 1;
+    /* background-color: rgb(121, 119, 119); */
+}
+.line3-p1 .coté2{
+   flex: 1;
+   background-image: url(/static/images/homme-nettoyage.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 20vh;
+}
+
+
+/* ===========  partie de nos services============== */
+
+
+/* ===========  partie des messages ============== */
+
+.message-container{
+   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50vh;
+    
+    background-color: rgb(222, 255, 79);
+   
+    margin: 10% auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.message-content{
+    flex: 1;
+    padding: 0 20px;
+}
+.buttons{
+    margin-top: 10px;
+}
+
+/* ===========  partie des messages ============== */
+
+
+.localisation-and-formDevis{
+    /* background-color: coral; */
+   /* margin-bottom: 10%; */
+   width: 100%;
+}
+
+.localisation-and-formDevis-tille{
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+.container-parts{
+    display: flex;
+}
+.partie-one{
+    flex: 1;
+    height: 400px;
+    padding:  0 20px;
+}
+.map-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+}
+
+.partie-two{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-left: solid 2px black;
+}
+
+.form-devis{
+    color: rgb(15, 147, 254); 
+}
+
+.form-group{
+    display: flex;
+    gap: 15px;
+}
+.partie-two form input{
+    width: 100%;
+    border: none;
+    outline: none;
+    color: rgb(15, 147, 254); 
+    background-color: white;
+    border-bottom: solid rgb(15, 147, 254) 1px;
+}
+
+.form-devis .part-form{
+    margin-bottom: 40px;
+}
+
+.form-devis .part-form label{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.form-devis .part-form input{
+    font-size: 20px;
+}
+
+.form-devis .part-form textarea{
+    border: none;
+    resize: none;
+    outline: none;
+    width: 100%;
+    color: rgb(15, 147, 254); 
+    padding: 25px 0;
+    font-size: 14px;
+    border-bottom: solid 1px rgb(15, 147, 254);
+}
+
+.form-devis button{
+    width: 100%;
+    background-color: rgb(222, 255, 79);
+    border: none;
+    color: rgb(15, 147, 254);
+    font-size: 15px;
+    padding: 15px;
+}
+
+.form-devis button:hover{
+    background-color: rgb(15, 147, 254);
+    color:  rgb(222, 255, 79);
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+
+   
+
+    .paragraphe1{
+        font-size: 40px;
+        text-transform: uppercase;
+        color: white;
+    }
+    
+    .paragraphe2{
+        font-size: 20px;
+        color: white;
+    }
+
+
+    .index-contact{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+        height: 10vh;
+        /* background-color: antiquewhite; */
+    }
+
+
+  
+    .case{
+        font-size: 22px;
+    }
+    .container-index-pourquoi_nous{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        gap: 60px;
+    
+    }
+   
+
+
+
+
+    .separate-line{
+        width: 100%;
+    }
+    .line1, .line2, .line3 {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .part1, .part2 {
+        width: 100%;
+        height: 50vh;
+        font-size: 16px;
+    }
+
+
+
+
+    .container-parts{
+        flex-direction: column-reverse;
+       padding: 30px;
+       
+    }
+    .partie-two{
+        border-left: none;
+    }
+    .form-devis{
+        margin-bottom: 40px;
+    }
+
+
+}
+

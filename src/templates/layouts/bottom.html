@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+    body{
+        margin:  0;
+        padding: 0;
+    }
+
+    .footer-container{
+        
+        display: flex;
+        justify-content: center;
+       
+        background-color: rgb(15, 147, 254);
+        color: white;
+        gap: 10%;
+
+        padding: 40px 0;
+        margin-top: 10%;
+       
+    }
+
+    .part{
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    @media (max-width: 768px) {
+        .footer-container{
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            
+        }
+    }
+</style>
+<body>
+    
+
+    
+
+    <div class="footer-container">
+
+        <div class="partie-1 part">
+            <p><strong>Notre société</strong></p>
+            <p>
+                Paragraphe. Cliquez ici pour ajouter votre propre<br>
+                texte. Utilisez cet espace pour relater votre parcours<br>
+                et présenter votre activité à vos visiteurs.
+            </p>
+        </div>
+
+        <div class="partie-2 part">
+            <p><strong>Siège social</strong></p>
+            <p>15, rue du Château 75001 Paris, France</p>
+            <p>01 23 45 67 89</p>
+            <p>info@monsite.fr</p>
+        </div>
+
+        <div class="partie-3 part">
+            <p><strong>Heures d'ouverture</strong></p>
+            <p>
+                Lun - Ven : 8h - 20h <br>
+                Samedi : 9h - 19h <br>
+                Dimanche : 9h - 20h
+            </p>
+        </div>
+
+    </div>
+
+
+</body>
+</html>

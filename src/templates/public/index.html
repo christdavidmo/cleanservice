@@ -1,0 +1,136 @@
+{% extends "layouts/base.html" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="image">
+       <p class="paragraphe1"> Offrez-vous un grand <br> ménage </p>
+       <p class="paragraphe2"> Des professionnels du nettoyage  à <br>
+                               votre service en région parisienne </p>
+    </div>
+
+        <div class="index-contact">
+            <p> Appelez au  01 23 45 67 89 </p>
+        </div>
+
+        <div class="index-pourquoi_nous">
+            <p>Pourquoi nous ?</p>
+
+            <div class="container-index-pourquoi_nous">
+                <div class="case">Nettoyage <br> professionnel <br> et certifié</div>
+                <div class="case">Nettoyage <br> soucieux de <br> l'environnement</div>
+                
+                <div class="case-3 case">100   %       <br> de satisfaction  <br> garantie</div>
+                <div class="case-4 case">Disponibilité  <br>  le soir et   <br> le week-end</div>
+            </div>
+        </div>
+
+
+        <div class="index-services">
+            <p class="index-services-title">Nos services</p>
+
+            <div class="separate-line">
+
+                <div class="line1">
+                    <div class="line1-p1 part1"> <div class="coté1"> Société de <br> nettoyage  </div>  <div class="coté2"> </div> </div> 
+                    <div class="line1-p2 part2"> <div class="coté1"> Service de <br> nettoyage  </div>  <div class="coté2"> </div> </div>
+                </div>
+
+                <div class="line2">
+                    <div class="line2-p1 part1"> <div class="coté1"> Nettoyage de <br> fenetre  </div>   <div class="coté2"> </div> </div> 
+                    <div class="line2-p2 part2"> <div class="coté1"> Netoyage en  <br> entreprise </div> <div class="coté2"> </div> </div>
+                </div>
+
+                <div class="line3">
+                    <div class="line3-p1 part1"> <div class="coté1"> Nettoyage <br> avant/apres <br> déménagement </div> <div class="coté2"> </div> </div> 
+                    <div class="line3-p2 part2"> <div class="coté1">Nettoyage <br> moquette </div>                <div class="coté2"> </div></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="message-container">
+
+            <button class="buttons" onclick="prevText()"><i class="fa-solid fa-left-long"></i></button>
+        
+            <div class="message-content">
+                <p><strong>Jean Tessier</strong></p>
+                <p>« Je suis un témoignage. Cliquez pour me modifier et <br>
+                    valoriser votre activité. Donnez ainsi un espace à vos <br>
+                     clients pour dire tout le bien qu'ils pensent de vous ».</p>
+            </div>
+    
+            <button class="buttons" onclick="nextText()"><i class="fa-solid fa-right-long"></i></button>
+        </div>
+
+
+
+
+        <div class="localisation-and-formDevis">
+            <p class="localisation-and-formDevis-tille">Contactez-nous pour un devis gratuit !</p>
+
+            <div class="container-parts">
+                
+                <div class="partie-one"> 
+                    <div class="map-container">
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            style="border:0" 
+                            allowfullscreen 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6040.315140052112!2d-17.465554236700683!3d14.69455626225353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec17292246d4da9%3A0x438c5fd7d91b27a2!2sPiscine%20Olympique%20Nationale%20de%20Dakar!5e0!3m2!1sfr!2ssn!4v1740018398940!5m2!1sfr!2ssn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+                
+                
+                <div class="partie-two">
+                   
+
+                    <form class="form-devis" action="">
+                        
+                        <div class="form-group">
+                                <div class="form-1 part-form">
+                                    <label for="nom">Nom</label> <br>
+                                    <input type="text" id="nom" name="nom" placeholder=""> 
+                                    
+                                </div>
+
+                                <div class="form-2 part-form">
+                                    <label for="prenoms">Prenoms</label> <br>
+                                    <input type="text" id="prenoms" name="prenoms" placeholder="">
+                                </div>
+                        </div>
+
+                        <div  class="form-3 part-form">
+                            <label for="email">Email</label> <br>
+                            <input type="email" id="email" name="email" placeholder="">
+                        </div>
+
+                        <div  class="form-4 part-form">
+                            <label for="objet">Objet</label> <br>
+                            <input type="text" id="objet" name="objet" placeholder="">
+                        </div>
+
+                        <div  class="form-5 part-form">
+                            <label for="message">Message</label> <br>
+                            <textarea id="message" name="message" placeholder=""></textarea>
+                        </div>
+                       
+                        <button>Envoyer</button>
+                    </form>
+            </div>
+
+        </div>
+
+
+{% endblock %}

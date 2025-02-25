@@ -49,10 +49,11 @@
     .logo-navbar{
      position: absolute;
      left: 10px; 
+     width: auto;
     }
 
     .logo-navbar img{
-      width: 100%; 
+      width: auto; 
       height: 95px;
      
     }
@@ -199,8 +200,8 @@
         <ul class="menu-lu" id="menu-lu">
           <li> <a href="{{ url_for('main.index') }}"> Accueil</a></li>
           <li> <a href="{{ url_for('main.AboutUs') }}"> À propos</a></li>
-         
           <li> <a href="{{ url_for('main.Services') }}"> Services</a></li> 
+          
           <li> <a href=""> FAQ</a></li>
           <li> <a href="">Contact</a></li>
           <li class="reserver-bouton"> <a href="">Réserver</a></li>

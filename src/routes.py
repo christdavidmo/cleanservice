@@ -17,7 +17,7 @@ def bottom():
 
 @bp.route('/AboutUS')
 def AboutUs():
-    return render_template("public/AboutUs.html")
+    return render_template("public/aboutus.html")
 
 @bp.route('/services')
 def Services():

@@ -355,7 +355,11 @@ body{
 
 @media only screen and (max-width: 768px) {
 
-   
+  
+        .image {
+            background-attachment: scroll;
+        }
+    
 
     .paragraphe1{
         font-size: 40px;

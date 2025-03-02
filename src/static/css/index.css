@@ -43,34 +43,52 @@ body{
 }
 
 
-.index-pourquoi_nous{
+
+/* ===========  pourquoi nous  ============== */
+
+.index-pourquoi_nous {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 5vw 0;
+    background-color: rgb(222, 255, 79);
+    color: rgb(15, 147, 254);
+}
+
+.index-pourquoi_nous p {
+    font-size: 3vw; 
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 3vw;
+}
+
+.container-index-pourquoi_nous {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajuste selon la largeur */
+    gap: 4vw;  
+    width: 90%;
+    max-width: 1200px;
+}
+
+.case {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   
-    margin-bottom: 10%;
-    background-color: rgb(222, 255, 79);
-    color: rgb(15, 147, 254);
-    height: 50vh;
-}
 
-.index-pourquoi_nous p{
-    font-size: 3vw;
-    text-transform: uppercase;
+    background: white;
+    padding: 3vw;
+    font-size: 2vw; 
     font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
-.container-index-pourquoi_nous{
-    display: flex;
-    flex-wrap: wrap;
-    font-weight: bold;
-    gap: 30px;
-}
+/* ===========  pourquoi nous  ============== */
 
-.case{
-    /* font-size: 25px; */
-    font-size: 2vw;
-}
+
+
 
 
 
@@ -231,6 +249,8 @@ body{
 /* ===========  partie de nos services============== */
 
 
+
+
 /* ===========  partie des messages ============== */
 
 .message-container{
@@ -293,9 +313,9 @@ body{
 .partie-two{
     flex: 1 1 45%;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 
     /* border-left: solid 2px black; */
 }
@@ -308,6 +328,7 @@ body{
     display: flex;
     gap: 5vw;
     flex-wrap: wrap;
+   
 }
 
 
@@ -324,6 +345,7 @@ body{
 }
 
 .form-devis .part-form{
+    /* width: 45%; */
     margin-bottom: 40px;
 }
 
@@ -393,26 +415,22 @@ body{
     }
 
 
-    .index-pourquoi_nous p{
-        font-size: 6vw;
-     
-    }
 
 
-  
-    .case{
-        font-size: 22px;
-    }
-    .container-index-pourquoi_nous{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
+    .index-pourquoi_nous p {
+        font-size: 5vw; 
         font-weight: bold;
-        gap: 60px;
-    
+        margin-bottom: 6%;
     }
-   
+    
+    .container-index-pourquoi_nous {
+        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+    }
+
+    .case {
+        font-size: 5vw; /* Ajustement du texte */
+        padding: 4vw ;
+    }
 
 
 
@@ -447,6 +465,9 @@ body{
     }
     .form-devis{
         margin-bottom: 40px;
+    }
+    .form-devis .part-form{
+        width: 100%;
     }
 
 

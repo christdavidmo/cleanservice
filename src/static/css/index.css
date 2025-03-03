@@ -1,7 +1,9 @@
 body{
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth; /* Active le défilement fluide */
 }
+
 
 .image{
 
@@ -38,8 +40,9 @@ body{
     text-align: center;
     font-size: 2vw;
     height: 15vh;
+    padding: 20px auto;
     text-transform: uppercase;
-    /* background-color: antiquewhite; */
+    /* background-color: rgb(109, 67, 12); */
 }
 
 
@@ -313,9 +316,9 @@ body{
 .partie-two{
     flex: 1 1 45%;
     display: flex;
-    /* flex-direction: column;
+    flex-direction: column;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
 
     /* border-left: solid 2px black; */
 }

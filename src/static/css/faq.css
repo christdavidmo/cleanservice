@@ -1,0 +1,194 @@
+/* Reset */
+body {
+    margin: 0;
+    padding: 0;
+    
+}
+
+/* Section FAQ globale */
+.faq-section {
+    display: flex;
+    justify-content: center;
+    /* align-items: flex-start; */
+   
+    min-height: 80vh;
+    background-color: #0F93FE;
+    padding: 50px 20px;
+    flex-wrap: wrap;
+}
+
+/* Partie Vision */
+.faq-vision {
+    flex: 1;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 250px;
+}
+
+.faq-vision h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.faq-vision p {
+    font-size: 30px;
+}
+
+/* Partie FAQ */
+.faq-container {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+    
+}
+
+/* Questions */
+.faq {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+    cursor: pointer;
+    color: #0F93FE;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question::after {
+    content: "+";
+    font-size: 22px;
+}
+
+.faq-question.active::after {
+    content: "-";
+}
+
+/* Réponses */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 15px;
+    color: #333;
+    font-size: 16px;
+}
+
+.faq-answer p {
+    padding: 10px 0;
+}
+
+
+
+
+/* Conteneur principal */
+.container-tarif-paiement {
+    background-color: #f4f4f4;
+    padding: 40px 20px;
+    
+    display: flex;
+    align-items: flex-start;
+    text-align: center;
+}
+
+/* Première partie */
+.parte-one-container-tarif-paiement{
+    flex: 1;
+    margin-bottom: 30px;
+}
+
+.parte-one-container-tarif-paiement p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #0F93FE;
+   
+}
+
+/* Deuxième partie */
+.parte-two-container-tarif-paiement {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+/* Élément individuel */
+.tarif-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 280px;
+    text-align: left;
+}
+
+.tarif-item h3 {
+    color: #0F93FE;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.tarif-item p {
+    color: #333;
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+   /* Partie Vision */
+.faq-vision {
+    flex: 1;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: left; /* Aligne le texte à gauche */
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre verticalement */
+    align-items: flex-start; /* Aligne le contenu à gauche */
+}
+
+
+.container-tarif-paiement {
+flex-direction: column;
+}
+
+.parte-one-container-tarif-paiement {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+.parte-one-container-tarif-paiement p{
+    text-align: center;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .faq-vision {
+        text-align: center; /* Centre le texte */
+        align-items: center; /* Centre le contenu */
+    }
+}
+
+}

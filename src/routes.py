@@ -22,3 +22,7 @@ def AboutUs():
 @bp.route('/services')
 def Services():
     return render_template("public/services.html")
+
+@bp.route('/FAQ')
+def Faq():
+    return render_template("public/faq.html")

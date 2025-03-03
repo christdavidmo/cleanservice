@@ -1,0 +1,124 @@
+
+{% extends "layouts/base.html" %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/faq.css') }}">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="faq-section">
+    <!-- Partie Vision -->
+    <div class="faq-vision">
+        <h2>FAQ</h2> 
+        <p>Notre <br> vision des choses</p>
+    </div>
+
+    <!-- Partie FAQ -->
+    <section class="faq-container">
+        <h1>Foire Aux Questions (FAQ)</h1>
+
+        <div class="faq">
+            <button class="faq-question">Quels types de services proposez-vous ?</button>
+            <div class="faq-answer">
+                <p>Nous proposons du nettoyage résidentiel, commercial, après chantier et bien plus encore.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="faq-question">Comment réserver un service ?</button>
+            <div class="faq-answer">
+                <p>Vous pouvez réserver un service via notre site web ou par téléphone au 01 23 45 67 89.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="faq-question">Quels sont vos tarifs ?</button>
+            <div class="faq-answer">
+                <p>Nos tarifs varient en fonction du service et de la surface. Demandez un devis gratuit !</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="faq-question">Dans quelles villes intervenez-vous ?</button>
+            <div class="faq-answer">
+                <p>Nous intervenons principalement à [Nom de la ville/région]. Contactez-nous pour plus d’informations.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="faq-question">Quels sont vos moyens de paiement ?</button>
+            <div class="faq-answer">
+                <p>Nous acceptons les paiements par carte bancaire, virement et espèces.</p>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+
+
+    <div class="container-tarif-paiement">
+
+        <div class="parte-one-container-tarif-paiement">
+            <p>
+              Tarif et paiement
+            </p> 
+
+            <p> 
+                Trouvez le forfait <br>
+                adapté à votre budget
+            </p>
+        </div>
+
+        <div class="parte-two-container-tarif-paiement">
+            
+            <div class="tarif-item">
+                <h3 >Paiements acceptés</h3>
+                <p >
+                    Paragraphe. Cliquez ici pour ajouter votre propre texte. Cliquez <br>
+                    sur « Modifier Texte » ou double-cliquez ici pour ajouter votre  <br>
+                    contenu et personnaliser les polices.
+                </p>
+            </div>
+
+            <div class="tarif-item">
+                <h3>Politique d'annulation</h3>
+                <p>
+                    Paragraphe. Cliquez ici pour ajouter votre propre texte. Cliquez  <br>
+                    sur « Modifier Texte » ou double-cliquez ici pour ajouter votre <br>
+                    contenu et personnaliser les polices.
+                </p>
+            </div>
+
+            <div class="tarif-item">
+                <h3>Satisfaction garantie</h3>
+                Paragraphe. Cliquez ici pour ajouter votre propre texte. Cliquez <br>
+                sur « Modifier Texte » ou double-cliquez ici pour ajouter votre <br>
+                contenu et personnaliser les polices.
+            </div>
+
+        </div>
+
+        
+    </div>
+
+
+<script>
+    document.querySelectorAll(".faq-question").forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            let answer = button.nextElementSibling;
+            if (answer.style.maxHeight) {
+                answer.style.maxHeight = null;
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        });
+    });
+</script>
+
+
+{% endblock %}

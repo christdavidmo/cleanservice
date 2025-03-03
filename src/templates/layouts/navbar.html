@@ -198,13 +198,15 @@
         </div>
 
         <ul class="menu-lu" id="menu-lu">
-          <li> <a href="{{ url_for('main.index') }}"> Accueil</a></li>
-          <li> <a href="{{ url_for('main.AboutUs') }}"> À propos</a></li>
-          <li> <a href="{{ url_for('main.Services') }}"> Services</a></li> 
+          <li> <a href="{{ url_for('main.index') }}"> Accueil</a>     </li>
+          <li> <a href="{{ url_for('main.AboutUs') }}"> À propos</a>  </li>
+          <li> <a href="{{ url_for('main.Services') }}"> Services</a> </li> 
           
-          <li> <a href=""> FAQ</a></li>
-          <li> <a href="">Contact</a></li>
-          <li class="reserver-bouton"> <a href="">Réserver</a></li>
+
+          <li> <a href="{{ url_for('main.Faq') }}"> FAQ </a> </li>
+          <li><a href="{{ url_for('main.index') }}#localisation" target="_blank">Contact</a></li>
+          
+          <li class="reserver-bouton"> <a href="">  Réserver </a> </li>
         </ul>
 
       </nav>

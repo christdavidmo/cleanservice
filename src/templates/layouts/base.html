@@ -11,10 +11,12 @@
     {% block stylesheets %} 
     {% endblock %}
     <title>
-        {% if title %} {{ title }} {% else %} My Blog {% endif %}
+        {% if title %} {{ title }} {% else %} CleanService {% endif %}
     </title>
 </head>
 <body>
+
+
 
     {% include "layouts/navbar.html" %}
 
@@ -22,6 +24,8 @@
    
     
    
+
+
     {% endblock content %}
 
     {% include "layouts/bottom.html" %}

@@ -137,11 +137,12 @@ body{
 
 .line1-p1{
     display: flex;
-    background-color: pink;
+    background-color: rgb(253, 229, 15);
 }
 .line1-p2{
     display: flex;
-    background-color: brown;
+    background-color: rgb(253, 132, 169);
+    
 }
 
 .line1-p1 .coté1{
@@ -151,7 +152,7 @@ body{
 }
 .line1-p1 .coté2{
    flex: 1;
-   background-image: url(/static/images/homme-nettoyage.png);
+   background-image: url(/static/images/image27.png);
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -166,7 +167,7 @@ body{
 }
 .line1-p2 .coté2{
    flex: 1;
-   background-image: url(/static/images/homme-nettoyage.png);
+   background-image: url(/static/images/image22.png);
        background-size: cover;
     background-position: center;
     width: 100%;
@@ -177,10 +178,11 @@ body{
 
 
 .line2-p1{
-    background-color: chartreuse;
+    background-color: rgb(110, 28, 16);
+    color: white;
 }
 .line2-p2{
-    background-color: blueviolet;
+    background-color: rgb(216, 212, 212);
 }
 
 .line2-p1 .coté1{
@@ -204,7 +206,7 @@ body{
 }
 .line2-p2 .coté2{
    flex: 1;
-    background-image: url(/static/images/homme-nettoyage.png);
+    background-image: url(/static/images/image24.png);
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -215,10 +217,12 @@ body{
 
 
 .line3-p1{
-    background-color: bisque;
+    background-color: rgb(57, 176, 119);
+    color: white;
 }
 .line3-p2{
-    background-color: darkblue;
+    background-color: rgb(5, 90, 181);
+    color: white;
 }
 .line3-p2 .coté1{
     text-align: center;
@@ -227,7 +231,7 @@ body{
 }
 .line3-p2 .coté2{
    flex: 1;
-   background-image: url(/static/images/homme-nettoyage.png);
+   background-image: url(/static/images/image25.png);
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -241,7 +245,7 @@ body{
 }
 .line3-p1 .coté2{
    flex: 1;
-   background-image: url(/static/images/homme-nettoyage.png);
+   background-image: url(/static/images/image23.png);
     background-size: cover;
     background-position: center;
     width: 100%;

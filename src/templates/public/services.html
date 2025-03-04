@@ -36,7 +36,7 @@
         <p class="service-title">Société de nettoyage</p>
         <p class="service-info">⏳ HEURE : 3 h</p>
         <p class="service-info">💰 PRIX : 200 Fcfa</p>
-        <button class="service-card-button">Réserver</button>
+        <button onclick="GoToReserve()" class="service-card-button">Réserver</button>
     </div>
 
     <div class="service-card">
@@ -44,7 +44,7 @@
         <p class="service-title">Service de repassage</p>
         <p class="service-info">⏳ HEURE : 2 h</p>
         <p class="service-info">💰 PRIX : 150 Fcfa</p>
-        <button class="service-card-button">Réserver</button>
+        <button onclick="GoToReserve()" class="service-card-button">Réserver</button>
     </div>
 
     <div class="service-card">
@@ -52,7 +52,7 @@
         <p class="service-title">Service de repassage</p>
         <p class="service-info">⏳ HEURE : 2 h</p>
         <p class="service-info">💰 PRIX : 150 Fcfa</p>
-        <button class="service-card-button">Réserver</button>
+        <button onclick="GoToReserve()" class="service-card-button">Réserver</button>
     </div>
 
 
@@ -61,7 +61,7 @@
         <p class="service-title">Service de repassage</p>
         <p class="service-info">⏳ HEURE : 2 h</p>
         <p class="service-info">💰 PRIX : 150 Fcfa</p>
-        <button class="service-card-button">Réserver</button>
+        <button onclick="GoToReserve()" class="service-card-button">Réserver</button>
     </div>
 
     <div class="service-card">
@@ -69,11 +69,17 @@
         <p class="service-title">Service de repassage</p>
         <p class="service-info">⏳ HEURE : 2 h</p>
         <p class="service-info">💰 PRIX : 150 Fcfa</p>
-        <button class="service-card-button">Réserver</button>
+        <button onclick="GoToReserve()" class="service-card-button">Réserver</button>
     </div>
 
    
 </div>
 
+
+<script>
+    function GoToReserve(){
+        window.location.href = "{{ url_for('main.Horaire') }}" ;
+    }
+</script>
 
 {% endblock %}

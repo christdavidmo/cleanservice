@@ -188,7 +188,7 @@
       <nav class="navbar">
 
         <div class="logo-navbar">
-          <a href=""><img src="/static/images/logo.png" alt="logo"></a>
+          <a href="{{ url_for('main.index') }}"><img src="/static/images/logo.png" alt="logo"></a>
         </div>
 
         <div class="menu-over" id="menu-over" onclick="closeMenu()"> </div>
@@ -204,9 +204,9 @@
           
 
           <li> <a href="{{ url_for('main.Faq') }}"> FAQ </a> </li>
-          <li><a href="{{ url_for('main.index') }}#localisation" target="_blank">Contact</a></li>
+          <li> <a href="{{ url_for('main.index') }}#localisation" target="_blank"> Contact</a> </li>
           
-          <li class="reserver-bouton"> <a href="">  Réserver </a> </li>
+          <li class="reserver-bouton"> <a href="{{ url_for('main.Services')}}">  Réserver </a> </li>
         </ul>
 
       </nav>

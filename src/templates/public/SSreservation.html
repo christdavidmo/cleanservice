@@ -1,0 +1,69 @@
+{% extends "layouts/base.html" %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/SSreservation.css') }}">
+
+   <!-- Librairie Flatpickr pour le calendrier -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<button onclick="goToBack()" class="button-back"> <i class="fa-solid fa-arrow-left"></i> Retour</button>
+
+
+
+
+<div class="container">
+
+    
+
+    <div class="container-part-one">
+        <h2>Détails Du Client</h2>
+
+        <form class="detail-client" action="">
+            <label for="name">Nom</label>
+            <input type="text" id="name" required>
+
+            <label for="adresse">Adresse </label>
+            <input type="mail" name="email" required>
+
+            <label for="numero">Numéro de téléphone </label>
+            <input type="number" name="numero" required>
+
+            <label for="quartier">Quartier </label>
+            <input type="text" name="numero" required>
+        
+        </form>
+
+    </div>
+
+
+
+    <div class="details-summary">
+        <!-- Afficher les détails choisis -->
+       
+            <h3>Détails du service</h3>
+            <p><strong>Service :</strong> Nettoyage</p>
+            <p><strong>Date :</strong> <span id="selectedDate"></span></p>
+            <p><strong>Heure :</strong> <span id="selectedTime"></span></p>
+            <p><strong>Lieu :</strong> </p>
+            <p><strong>Durée :</strong> </p>
+            <p><strong>Prix :</strong> </p>
+       
+    </div>
+</div>
+
+
+<script>
+    function goToBack() {
+        window.location.href = "{{ url_for('main.Horaire') }}";  // Remplace par le nom de ta page pour l'étape suivante
+    }
+</script>
+{% endblock content %}

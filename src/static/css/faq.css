@@ -1,15 +1,16 @@
-/* Reset */
 body {
     margin: 0;
     padding: 0;
     
 }
 
-/* Section FAQ globale */
+/* =========================  */
 .faq-section {
     display: flex;
     justify-content: center;
-    /* align-items: flex-start; */
+    align-items: flex-start;
+    margin: auto;
+    gap: 10%;
    
     min-height: 80vh;
     background-color: #0F93FE;
@@ -17,28 +18,36 @@ body {
     flex-wrap: wrap;
 }
 
-/* Partie Vision */
+/* ========================= Partie Vision  =========================*/
 .faq-vision {
-    flex: 1;
+    
     color: white;
     padding: 40px;
     border-radius: 10px;
-    text-align: center;
+    
     min-width: 250px;
+
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .faq-vision h2 {
-    font-size: 30px;
+    font-size: 35px;
     margin-bottom: 10px;
+    text-align: left;
 }
 
 .faq-vision p {
     font-size: 30px;
+    text-align: left;
+    margin: 5px 0;
 }
 
-/* Partie FAQ */
+/* ========================= Partie FAQ  =========================*/
 .faq-container {
-    flex: 1;
+    
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -47,7 +56,7 @@ body {
     
 }
 
-/* Questions */
+/* ========================= Questions ========================= */
 .faq {
     border-bottom: 1px solid #ddd;
     margin-bottom: 10px;
@@ -77,7 +86,7 @@ body {
     content: "-";
 }
 
-/* Réponses */
+/* ========================= Réponses  =========================*/
 .faq-answer {
     max-height: 0;
     overflow: hidden;
@@ -94,39 +103,54 @@ body {
 
 
 
-/* Conteneur principal */
+
+
+
+/* ========================= Conteneur principal =========================*/
 .container-tarif-paiement {
     background-color: #f4f4f4;
     padding: 40px 20px;
     
     display: flex;
     align-items: flex-start;
+    justify-content: center;
     text-align: center;
+    gap: 10%;
+    margin: auto;
+    padding: 50px 20px;
 }
 
 /* Première partie */
 .parte-one-container-tarif-paiement{
-    flex: 1;
-    margin-bottom: 30px;
+   
+    padding: 0;
+
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aquamarine; */
 }
 
 .parte-one-container-tarif-paiement p {
     font-size: 30px;
     font-weight: bold;
     color: #0F93FE;
-   
+    text-align: left;
 }
 
 /* Deuxième partie */
 .parte-two-container-tarif-paiement {
-    flex: 1;
+    
     display: flex;
     justify-content: space-between;
+   
     gap: 20px;
-    max-width: 900px;
-    width: 100%;
+    max-width: 700px;
+    width: 80%;
     flex-wrap: wrap;
     flex-direction: column;
+    /* background-color: rgb(76, 87, 84); */
 }
 
 /* Élément individuel */
@@ -153,18 +177,45 @@ body {
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
+
+    .faq-section {
+        /* display: flex;
+        justify-content: center;
+        align-items: flex-start; */
+        /* margin: auto;
+        gap: 10%; */
+       
+        /* min-height: 80vh;
+        background-color: #0F93FE; */
+        padding: 30px 20px;
+        /* flex-wrap: wrap; */
+    }
+    
+    
    /* Partie Vision */
 .faq-vision {
     flex: 1;
-    color: white;
+    /* color: white;
     padding: 40px;
-    border-radius: 10px;
-    text-align: left; /* Aligne le texte à gauche */
-    min-width: 250px;
+    border-radius: 10px; */ 
+    /* text-align: left; Aligne le texte à gauche */
+    /* min-width: 250px;
     display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centre verticalement */
-    align-items: flex-start; /* Aligne le contenu à gauche */
+    flex-direction: column; */
+    /* justify-content: center; Centre verticalement */
+    /* align-items: flex-start; Aligne le contenu à gauche */
+    margin: 0;
+    padding: 0;
+    align-items: flex-start;
+    justify-content: flex-end;
+    text-align: left;
+   
+    
+}
+
+.faq-vision h2,
+.faq-vision p {
+    text-align: left;
 }
 
 
@@ -172,23 +223,29 @@ body {
 flex-direction: column;
 }
 
-.parte-one-container-tarif-paiement {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
+.parte-one-container-tarif-paiement{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    padding: 0;
 }
 
 .parte-one-container-tarif-paiement p{
     text-align: center;
+    
 }
+
+.parte-two-container-tarif-paiement{
+    width: 100%;
+}
+
+
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-    .faq-vision {
-        text-align: center; /* Centre le texte */
-        align-items: center; /* Centre le contenu */
-    }
+    
 }
 
 }

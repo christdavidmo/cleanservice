@@ -26,3 +26,11 @@ def Services():
 @bp.route('/FAQ')
 def Faq():
     return render_template("public/faq.html")
+
+@bp.route('/reservation/horaires')
+def Horaire():
+    return render_template("public/FSreservation.html")
+
+@bp.route('/reservation/infos')
+def Reservation():
+    return render_template("public/SSreservation.html")

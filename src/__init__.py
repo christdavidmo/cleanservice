@@ -9,14 +9,14 @@ import os
 db = SQLAlchemy()
 mail = Mail()
 
-def creat_app():
+def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
     db.init_app(app)
     mail.init_app(app)
 
-    # from .models import User,Address
+    from .models import User,Address
 
     from . import routes
     app.register_blueprint(routes.bp)

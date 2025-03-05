@@ -1,11 +1,37 @@
-from flask import Blueprint, render_template
-
+from flask import Blueprint, render_template , request ,send_file
+from utils import generate_invoice ,save_to_excel ,send_email
+import os
 
 bp = Blueprint('main', __name__)
 
 @bp.route('/')
 def index():
     return render_template("public/index.html")
+
+
+@bp.route( '/submit_reservation', methods=['POST'] )
+def submit_reservation():
+
+    data ={
+        "name": request.form['name'],
+        "service": request.form['service'],
+        "prix": request.form['servicePrix'], 
+        "date": request.form['date'],
+        "time": request.form['heure'],  
+        "adresse": request.form['adresse'],
+        "numero": request.form['numero']
+        }
+    
+    # ==== création facture ====
+    pdf_path = generate_invoice(data)
+
+    # ==== envoie facture via email ====
+    send_email(data,pdf_path)
+
+    # ==== enregistrer sur excel ====
+    save_to_excel(data)
+
+    return "Réservation confirmée ! Facture envoyée par email."
 
 @bp.route('/navbar')
 def navbar():

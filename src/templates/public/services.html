@@ -10,11 +10,11 @@
 
 
 <div class="container-text">
-        
+
     <div class="container-text-1">
         <p class="container-text-1-1">Services</p>
         <p class="container-text-1-2">Pour nous, la propreté  <br> doit être immaculée</p>
-        
+
     </div>
 
     <div class="container-text-2">
@@ -33,53 +33,68 @@
 <div class="container-service-card">
     <div class="service-card">
         <div class="service-image card-1-image" ></div>
-        <p class="service-title">Société de nettoyage</p>
-        <p class="service-info">⏳ HEURE : 3 h</p>
-        <p class="service-info">💰 PRIX : 200 Fcfa</p>
-        <button onclick="GoToReserve()" class="service-card-button">Réserver</button>
+        <p class="service-title">Service de nettoyage</p>
+        <p class="service-info">3 h</p>
+        <p class="service-prix">80 000 Fcfa</p>
+        <!-- 💰 PRIX ⏳ HEURE : -->
+        <button onclick="GoToReserve(this)" class="service-card-button">Réserver</button>
     </div>
 
     <div class="service-card">
         <div class="service-image card-2-image" ></div>
         <p class="service-title">Service de repassage</p>
-        <p class="service-info">⏳ HEURE : 2 h</p>
-        <p class="service-info">💰 PRIX : 150 Fcfa</p>
-        <button onclick="GoToReserve()" class="service-card-button">Réserver</button>
+        <p class="service-info"> 2 h</p>
+        <p class="service-prix"> 80 000 Fcfa</p>
+        <button onclick="GoToReserve(this)" class="service-card-button">Réserver</button>
     </div>
 
     <div class="service-card">
         <div class="service-image card-2-image" ></div>
-        <p class="service-title">Service de repassage</p>
-        <p class="service-info">⏳ HEURE : 2 h</p>
-        <p class="service-info">💰 PRIX : 150 Fcfa</p>
-        <button onclick="GoToReserve()" class="service-card-button">Réserver</button>
+        <p class="service-title">Nettoyage avant/après déménagement</p>
+        <p class="service-info"> 2 h</p>
+        <p class="service-prix"> 80 000 Fcfa</p>
+        <button onclick="GoToReserve(this)" class="service-card-button">Réserver</button>
     </div>
 
 
     <div class="service-card">
         <div class="service-image card-2-image" ></div>
-        <p class="service-title">Service de repassage</p>
-        <p class="service-info">⏳ HEURE : 2 h</p>
-        <p class="service-info">💰 PRIX : 150 Fcfa</p>
-        <button onclick="GoToReserve()" class="service-card-button">Réserver</button>
+        <p class="service-title">Nettoyage de moquette</p>
+        <p class="service-info"> 2 h</p>
+        <p class="service-prix">80 000 Fcfa</p>
+        <button onclick="GoToReserve(this)" class="service-card-button">Réserver</button>
     </div>
 
     <div class="service-card">
         <div class="service-image card-2-image" ></div>
-        <p class="service-title">Service de repassage</p>
-        <p class="service-info">⏳ HEURE : 2 h</p>
-        <p class="service-info">💰 PRIX : 150 Fcfa</p>
-        <button onclick="GoToReserve()" class="service-card-button">Réserver</button>
+        <p class="service-title">Nettoyage de fenêtres</p>
+        <p class="service-heure"> 2 h</p>
+         <p class="service-prix"> 80 000 Fcfa</p> 
+        <button onclick="GoToReserve(this)" class="service-card-button">Réserver</button>
     </div>
 
-   
+
 </div>
 
 
 <script>
-    function GoToReserve(){
-        window.location.href = "{{ url_for('main.Horaire') }}" ;
+    function GoToReserve(button) {
+        let serviceTitleElement = button.parentElement.querySelector(".service-title");
+        let servicePrixElement  = button.parentElement.querySelector(".service-prix");
+
+        if (serviceTitleElement && servicePrixElement) {
+            let serviceTitle = serviceTitleElement.innerText;
+            let servicePrix = servicePrixElement.innerText;
+
+            localStorage.setItem("service_title", serviceTitle);
+            localStorage.setItem("service_prix", servicePrix);
+
+            window.location.href = "{{ url_for('main.Horaire') }}" ;
+        } else {
+            console.error("Element non trouvé.");
+        }
     }
 </script>
+
 
 {% endblock %}

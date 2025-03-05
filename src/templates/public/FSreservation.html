@@ -44,7 +44,10 @@
     </div>
 
     <h3>Détails du service</h3>
-    <p id="summary" class="details-reservation">Sélectionnez une date et une heure</p>
+
+    <p id="summary" class="details-reservation">
+        Sélectionnez une date et une heure
+    </p>
 
     <!-- <a href="{{ url_for('main.Reservation') }}">
         <button>Continuer</button>
@@ -58,6 +61,8 @@
 <script>
     let selectedDate = "";
     let selectedTime = "";
+    let serviceTitle = localStorage.getItem("service_title") ;
+    let servicePrix  = localStorage.getItem("service_prix") ;
 
     // Initialisation du calendrier
     flatpickr("#date", {
@@ -83,13 +88,17 @@
 
     function updateSummary() {
         if (selectedDate && selectedTime) {
+           
+
             document.getElementById("summary").innerHTML = `
-                <strong>Service :</strong> Nettoyage <br>
+                <strong>Service :</strong> ${serviceTitle} <br> 
                 <strong>Date :</strong> ${selectedDate} <br>
                 <strong>Heure :</strong> ${selectedTime} <br>
-                <strong>Lieu :</strong> Domicile du client <br>
-                <strong>Durée :</strong> 2 heures <br>
-                <strong>Prix :</strong> 80 000 FCFA
+                 <strong>Prix:</strong> ${servicePrix} <br>
+              
+                <!-- <strong>Lieu :</strong> Domicile du client <br> -->
+                <!-- <strong>Durée :</strong> 2 heures <br> -->
+                <!-- <strong>Prix :</strong> 80 000 FCFA -->
             `;
 
             document.getElementById('summary').classList.add('active') ;
@@ -98,8 +107,10 @@
 
 
     function goToBack() {
-        window.location.href = "{{ url_for('main.Services') }}";  // Remplace par le nom de ta page pour l'étape suivante
+        window.location.href = "{{ url_for('main.Services') }}";  
     }
+
+    
 
 
    // Fonction pour passer à l'étape suivante
@@ -110,8 +121,11 @@
     }
 
     // Rediriger vers la page suivante en passant les informations
-    localStorage.setItem("selectedDate", selectedDate);
-    localStorage.setItem("selectedTime", selectedTime);
+    localStorage.setItem("selectService",     serviceTitle)
+    localStorage.setItem("selectServicePrix", servicePrix )
+    
+    localStorage.setItem("selectedDate",  selectedDate);
+    localStorage.setItem("selectedTime",  selectedTime);
     window.location.href = "{{ url_for('main.Reservation') }}";  // Remplace par le nom de ta page pour l'étape suivante
 }
 </script>

@@ -20,48 +20,105 @@
 
 
 
-<div class="container">
+<div class="parent-container">
 
+    <div class="container">
+
+        <div class="container-part-one">
+            <h2>Détails Du Client</h2>
     
+            <form class="detail-client" action="/submit_reservation" method="post">
+                <label for="name">Nom</label>
+                <input type="text" id="name" name="name" required>
+    
+                <label for="adresse">Adresse </label>
+                <input type="mail" id="adresse" name="adresse" required>
+    
+                <label for="numero">Numéro de téléphone </label>
+                <input type="tel" id="numero" name="numero"  placeholder="+221 7XX XXX XXX" 
+                    pattern="^\+221(77|76|70|78)\d{7}$"
+                    required> 
+                
+    
+                <label for="quartier">Quartier </label>
+                <input type="text" id="quartier" name="quartier"  required>
+    
+                <!-- <select name="quartier" id="quartier">
+                    <option value="ouakam">Ouakam</option>
+                    <option value="sacre coeur">Sacre Coeur</option>
+                    <option value="point E">Point E</option>
+                    <option value="fass delorme">Fass Delorme</option>
+                    <option value="autre">Autre</option>
+                </select> -->
 
-    <div class="container-part-one">
-        <h2>Détails Du Client</h2>
 
-        <form class="detail-client" action="">
-            <label for="name">Nom</label>
-            <input type="text" id="name" required>
+                <!-- Champs cachés pour envoyer les détails du service -->
+                <input type="hidden" id="service" name="service">
+                <input type="hidden" id="servicePrix" name="servicePrix">
+                <input type="hidden" id="date" name="date">
+                <input type="hidden" id="heure" name="heure">
 
-            <label for="adresse">Adresse </label>
-            <input type="mail" name="email" required>
+                <span id="error_message" style="color: red;"></span>
 
-            <label for="numero">Numéro de téléphone </label>
-            <input type="number" name="numero" required>
+                <button type="submit">Envoyer</button>
 
-            <label for="quartier">Quartier </label>
-            <input type="text" name="numero" required>
-        
-        </form>
+               
+            </form>
+    
+        </div>
+    
+       
+        <div id="details-summary" class="details-summary"></div>
 
     </div>
 
+    <!-- <div id="button-send" class="button-send">
+        <button>Envoyer</button>
+    </div> -->
 
-
-    <div class="details-summary">
-        <!-- Afficher les détails choisis -->
-       
-            <h3>Détails du service</h3>
-            <p><strong>Service :</strong> Nettoyage</p>
-            <p><strong>Date :</strong> <span id="selectedDate"></span></p>
-            <p><strong>Heure :</strong> <span id="selectedTime"></span></p>
-            <p><strong>Lieu :</strong> </p>
-            <p><strong>Durée :</strong> </p>
-            <p><strong>Prix :</strong> </p>
-       
-    </div>
 </div>
 
 
 <script>
+
+    function ValidePhoneNumber(){
+        let phoneInput = Document.getElementById('numero');
+        let message_error = Document.getElementById('error_message');
+        let regex = /^\+221(77|76|78|70)\d{7}$/; // Numéros commençant par 77, 76, 78 ou 70 et contenant 7 chiffres après
+
+        if (!regex.test(phoneInput.value)) {
+            errorMsg.textContent = "Numéro invalide ! Utilisez +221 suivi de 77, 76, 78 ou 70 et 7 chiffres.";
+            return false; // Empêche l'envoi du formulaire
+        }
+        return true; // Autorise l'envoi
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        let selectService = localStorage.getItem("selectService");
+        let selectServicePrix = localStorage.getItem("selectServicePrix");
+        let selectDate = localStorage.getItem("selectedDate");
+        let selectTime = localStorage.getItem("selectedTime");
+
+        if (selectDate && selectTime) {
+            document.getElementById('details-summary').innerHTML = `
+                <h3>Détails du service</h3>
+                <p> <strong> Service : </strong>  ${selectService}   </p>
+                <p> <strong> Prix : </strong>     ${selectServicePrix} FCFA </p>
+                <p> <strong> Date : </strong>     ${selectDate}   </p>
+                <p> <strong> Heure : </strong>    ${selectTime}   </p>
+            `;
+
+            // Remplir les champs cachés
+            document.getElementById('service').value = selectService;
+            document.getElementById('servicePrix').value = selectServicePrix;
+            document.getElementById('date').value = selectDate;
+            document.getElementById('heure').value = selectTime;
+        } else {
+            document.getElementById('details-summary').innerHTML =
+                `<p> AUCUN DETAILS ou AUCUNE SELECTION SELECTIONNEE </p>`;
+        }
+    });
+
     function goToBack() {
         window.location.href = "{{ url_for('main.Horaire') }}";  // Remplace par le nom de ta page pour l'étape suivante
     }

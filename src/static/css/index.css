@@ -33,6 +33,15 @@ body{
     color: white;
 }
 
+.image button{
+    padding: 10px;
+    border: none;
+    background-color: rgb(222, 255, 79);
+    color: rgb(15, 147, 254);
+    font-weight: bold;
+    font-size: 30px;
+    cursor: pointer;
+}
 .index-contact{
     display: flex;
     justify-content: center;

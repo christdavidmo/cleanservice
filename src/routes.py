@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template , request ,send_file
+from flask import Blueprint, render_template , request ,send_file,redirect,url_for
 from utils import generate_invoice ,save_to_excel ,send_email
 import os
 
@@ -26,12 +26,13 @@ def submit_reservation():
     pdf_path = generate_invoice(data)
 
     # ==== envoie facture via email ====
-    send_email(data,pdf_path)
+    # send_email(data,pdf_path)
 
     # ==== enregistrer sur excel ====
     save_to_excel(data)
 
     return "Réservation confirmée ! Facture envoyée par email."
+    return  redirect(url_for('main.Services'))
 
 @bp.route('/navbar')
 def navbar():

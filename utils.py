@@ -8,10 +8,12 @@ from src import mail
 
 def generate_invoice(data):
     """ Génère un fichier PDF avec les informations de réservation """
-    facture_path = f"factures/{data['name']}_facture.pdf"
-    
-    if not os.path.exists("factures"):
-        os.makedirs("factures")
+    # Définir le chemin vers le répertoire factures dans src
+    directory = os.path.join(os.path.dirname(__file__), 'factures')
+    # Assurez-vous que le répertoire existe
+    os.makedirs(directory, exist_ok=True)
+    # Définir le chemin complet du fichier PDF
+    facture_path = os.path.join(directory, f"{data['name']}_facture.pdf")
 
     c = canvas.Canvas(facture_path, pagesize=letter)
     c.drawString(100, 750, f"Facture pour {data['name']}")
@@ -56,12 +58,18 @@ def send_email(data, pdf_path):
     with open(pdf_path, "rb") as f:
         msg.attach("facture.pdf", "application/pdf", f.read())
 
-    mail.send(msg)  # ✅ Envoi de l'email
+    mail.send(msg)  #  Envoi de l'email
+
 
 def save_to_excel(data):
     """ Sauvegarde les données dans un fichier Excel mensuel """
     mois = datetime.now().strftime("%Y-%m")
-    filename = f"reservations_{mois}.xlsx"
+    # Définir le chemin vers le répertoire src
+    directory = os.path.join(os.path.dirname(__file__), 'src')
+    # Assurez-vous que le répertoire existe
+    os.makedirs(directory, exist_ok=True)
+    # Définir le nom complet du fichier avec le chemin
+    filename = os.path.join(directory, f"reservations_{mois}.xlsx")
 
     # Vérifier si le fichier existe
     if os.path.exists(filename):

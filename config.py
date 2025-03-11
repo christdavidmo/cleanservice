@@ -5,7 +5,18 @@ class Config :
 
     APP_NAME= "Clean_Service"
     basedir =  os.path.abspath(os.path.dirname(__file__))
-    SQLALCHEMY_DATABASE_URI = "sqlite:///"+ os.path.join(basedir,"cleanService.sqlite")
+
+    # SQLALCHEMY_DATABASE_URI = "sqlite:///"+ os.path.join(basedir,"cleanService.sqlite")
+    # SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL').replace("postgres://", "postgresql://")
+
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://cleanservicedb_user:12ZIxEnc3Qqa8bUpBUApfHuaKe1TXNY4@dpg-cv8489tds78s73cso6k0-a/cleanservicedb').replace("postgres://", "postgresql://")
+
+    if not SQLALCHEMY_DATABASE_URI:
+        raise ValueError("DATABASE_URL n'est pas défini. Configure une base PostgreSQL sur Render.")
+
+    
+
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     SECRET_KEY = "HereIsMySecretkey"
@@ -17,7 +28,7 @@ class Config :
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = os.getenv('MAIL_USERNAME', 'christdavidmondjot6@gmail.com')
-    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD', 'Davidestceluiquimet5')
-    MAIL_DEFAULT_SENDER = os.getenv('MAIL_USERNAME', 'christdavidmondjot6@gmail.com')
+    MAIL_USERNAME = os.getenv('MAIL_USERNAME', '')
+    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD', '')
+    MAIL_DEFAULT_SENDER = os.getenv('MAIL_USERNAME', '')
 

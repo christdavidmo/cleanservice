@@ -69,7 +69,7 @@ body{
 }
 
 .index-pourquoi_nous p {
-    font-size: 3vw; 
+    font-size: 3vw;
     text-transform: uppercase;
     font-weight: bold;
     margin-bottom: 3vw;
@@ -78,7 +78,7 @@ body{
 .container-index-pourquoi_nous {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajuste selon la largeur */
-    gap: 4vw;  
+    gap: 4vw;
     width: 90%;
     max-width: 1200px;
 }
@@ -91,7 +91,7 @@ body{
 
     background: white;
     padding: 3vw;
-    font-size: 2vw; 
+    font-size: 2vw;
     font-weight: bold;
     text-align: center;
     border-radius: 10px;
@@ -126,140 +126,175 @@ body{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    gap: 4%;
 }
-.line1,.line2,.line3{
+
+.service-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* border: solid 2px black; */
+    border-radius: 5px; 
+    margin: 12px 0;
+    width: 400px;
+    background-color: rgb(15, 147, 254);
+}
+.service-card:hover{
+    box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.5);
+}
+.service-texte,.service-image{
+    flex: 1;
+}
+.service-texte{
+    text-align: center;
+    color: white;
+}
+.service-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: brown; */
+    
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 20vh; 
+}
+
+/* .line1,.line2,.line3{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 15px;
-}
+} */
 
-.part1,.part2{ 
-    display: flex; 
+/* .part1,.part2{
+    display: flex;
     justify-content: center;
     align-items: center;
     flex: 1;
     width: 500px;
     height: 20vh;
-}
+} */
 
-.line1-p1{
+/* .line1-p1{
     display: flex;
     background-color: rgb(253, 229, 15);
 }
 .line1-p2{
     display: flex;
     background-color: rgb(253, 132, 169);
-    
-}
 
-.line1-p1 .coté1{
+} */
+
+/*.line1-p1 .coté1{
     text-align: center;
     flex: 1;
-    /* background-color: rgb(121, 119, 119); */
-}
-.line1-p1 .coté2{
+    /* background-color: rgb(121, 119, 119); 
+}*/
+/* .line1-p1 .coté2{
    flex: 1;
    background-image: url(/static/images/image27.png);
     background-size: cover;
     background-position: center;
     width: 100%;
     height: 20vh;
-}
+} */
 
 
-.line1-p2 .coté1{
+ /*.line1-p2 .coté1{
     text-align: center;
     flex: 1;
-    /* background-color: rgb(121, 119, 119); */
-}
-.line1-p2 .coté2{
+    /* background-color: rgb(121, 119, 119); 
+}*/
+/* .line1-p2 .coté2{
    flex: 1;
    background-image: url(/static/images/image22.png);
        background-size: cover;
     background-position: center;
     width: 100%;
     height: 20vh;
-}
+} */
 
 
 
 
-.line2-p1{
+/* .line2-p1{
     background-color: rgb(110, 28, 16);
     color: white;
 }
 .line2-p2{
     background-color: rgb(216, 212, 212);
-}
+} */
 
-.line2-p1 .coté1{
+/*.line2-p1 .coté1{
     text-align: center;
     flex: 1;
-    /* background-color: rgb(121, 119, 119); */
-}
-.line2-p1 .coté2{
+    /* background-color: rgb(121, 119, 119); 
+}*/
+/* .line2-p1 .coté2{
    flex: 1;
    background-image: url(/static/images/homme-nettoyage.png);
     background-size: cover;
     background-position: center;
     width: 100%;
     height: 20vh;
-}
+} */
 
-.line2-p2 .coté1{
+ /*.line2-p2 .coté1{
     text-align: center;
     flex: 1;
-    /* background-color: rgb(121, 119, 119); */
-}
-.line2-p2 .coté2{
+    /* background-color: rgb(121, 119, 119); 
+}*/
+/* .line2-p2 .coté2{
    flex: 1;
     background-image: url(/static/images/image24.png);
     background-size: cover;
     background-position: center;
     width: 100%;
     height: 20vh;
-}
+} */
 
 
 
 
-.line3-p1{
+/* .line3-p1{
     background-color: rgb(57, 176, 119);
     color: white;
 }
 .line3-p2{
     background-color: rgb(5, 90, 181);
     color: white;
-}
-.line3-p2 .coté1{
+} */
+/*.line3-p2 .coté1{
     text-align: center;
     flex: 1;
-    /* background-color: rgb(121, 119, 119); */
-}
-.line3-p2 .coté2{
+    /* background-color: rgb(121, 119, 119); 
+}*/
+/* .line3-p2 .coté2{
    flex: 1;
    background-image: url(/static/images/image25.png);
     background-size: cover;
     background-position: center;
     width: 100%;
     height: 20vh;
-}
+} */
 
-.line3-p1 .coté1{
+/*.line3-p1 .coté1{
     text-align: center;
     flex: 1;
-    /* background-color: rgb(121, 119, 119); */
-}
-.line3-p1 .coté2{
+    /* background-color: rgb(121, 119, 119); 
+}*/
+/* .line3-p1 .coté2{
    flex: 1;
    background-image: url(/static/images/image23.png);
     background-size: cover;
     background-position: center;
     width: 100%;
     height: 20vh;
-}
+} */
 
 
 /* ===========  partie de nos services============== */
@@ -269,29 +304,52 @@ body{
 
 /* ===========  partie des messages ============== */
 
+.parent-message-container{
+    margin: 10% auto;
+}
+.message-container-title{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: bold;
+}
 .message-container{
-   
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50vh;
-    
     background-color: rgb(222, 255, 79);
-   
-    margin: 10% auto;
+    height: 40vh;
     padding: 20px;
     text-align: center;
 }
 
 .message-content{
-    flex: 1;
+    /* flex: 1; */
     padding: 0 20px;
+    background-color:  rgb(15, 147, 254);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.message-content .message{
+    font-size: 20px;
+    padding: 10px;
+    color: white;
 }
 .buttons{
     margin-top: 10px;
+    border: none;
+    background-color: rgb(222, 255, 79);
+}
+
+.buttons i{
+    font-size: 30px;
+    color: rgb(15, 147, 254);
 }
 
 /* ===========  partie des messages ============== */
+
+
 
 
 .localisation-and-formDevis{
@@ -337,14 +395,14 @@ body{
 }
 
 .form-devis{
-    color: rgb(15, 147, 254); 
+    color: rgb(15, 147, 254);
 }
 
 .form-group{
     display: flex;
     gap: 5vw;
     flex-wrap: wrap;
-   
+
 }
 
 
@@ -376,7 +434,7 @@ body{
 }
 
 .form-devis .part-form textarea{
-    
+
     padding: 25px 0;
     font-size: 14px;
     border-bottom: solid 1px rgb(15, 147, 254);
@@ -401,18 +459,18 @@ body{
 
 @media only screen and (max-width: 768px) {
 
-  
+
     .image {
             background-attachment: scroll;
     }
-    
+
 
     .paragraphe1{
         font-size: 40px;
         text-transform: uppercase;
         color: white;
     }
-    
+
     .paragraphe2{
         font-size: 20px;
         color: white;
@@ -434,11 +492,11 @@ body{
 
 
     .index-pourquoi_nous p {
-        font-size: 5vw; 
+        font-size: 5vw;
         font-weight: bold;
         margin-bottom: 6%;
     }
-    
+
     .container-index-pourquoi_nous {
         grid-template-columns: 1fr; /* Une seule colonne sur mobile */
     }
@@ -467,6 +525,26 @@ body{
 
 
 
+    /* #===== messages ======= */
+    .parent-message-container{
+        margin: 12% auto;
+    }
+    
+    .message-container{
+        background-color: rgb(222, 255, 79);
+        height: auto;
+        padding: 15px 10px;
+    }
+
+    .message-content .message{
+        font-size: 15px;
+        padding: 10px;
+        color: white;
+    }
+    /* #===== messages ======= */
+
+
+
     .localisation-and-formDevis-tille{
         font-size: 6vw;
     }
@@ -474,7 +552,7 @@ body{
     .container-parts{
         flex-direction: column-reverse;
         padding: 30px;
-       
+
     }
     .partie-two{
         border-left: none;

@@ -16,18 +16,25 @@
     </div>
 
         <div class="index-contact">
-            <p> Appelez au  77 457 78 90 </p>
+            
+                <p> Appelez au  {{numeros.number}} </p>
+           
+            <!-- <p> Appelez au  77 457 78 90 </p> -->
         </div>
 
         <div class="index-pourquoi_nous">
             <p>Pourquoi nous ?</p>
 
             <div class="container-index-pourquoi_nous">
-                <div class="case">Nettoyage <br> professionnel <br> et certifié</div>
+                {% for raison in why_us %}
+                    <div class="case"> {{ raison.reason }} </div>
+                {% endfor %}
+
+                <!-- <div class="case">Nettoyage <br> professionnel <br> et certifié</div>
                 <div class="case">Nettoyage <br> soucieux de <br> l'environnement</div>
                 
                 <div class="case-3 case">100   %       <br> de satisfaction  <br> garantie</div>
-                <div class="case-4 case">Disponibilité  <br>  le soir et   <br> le week-end</div>
+                <div class="case-4 case">Disponibilité  <br>  le soir et   <br> le week-end</div> -->
             </div>
         </div>
 
@@ -36,8 +43,17 @@
             <p class="index-services-title">Nos services</p>
 
             <div class="separate-line">
+                {% for service in services %}
+                    <div class="service-card">
+                        
+                        <div class="service-texte"> {{ service.nameService }}</div>
+                        <div class="service-image" style="background-image: url('{{ url_for('static', filename=service['imageservice'].replace('\\', '/')) }}');">
+                        </div>
+                        
+                    </div>
+                {% endfor %}
 
-                <div class="line1">
+                <!-- <div class="line1">
                     <div class="line1-p1 part1"> <div class="coté1"> Société de <br> nettoyage  </div>  <div class="coté2"> </div> </div> 
                     <div class="line1-p2 part2"> <div class="coté1"> Service de <br> nettoyage  </div>  <div class="coté2"> </div> </div>
                 </div>
@@ -50,27 +66,40 @@
                 <div class="line3">
                     <div class="line3-p1 part1"> <div class="coté1"> Nettoyage <br> avant/apres <br> déménagement </div> <div class="coté2"> </div> </div> 
                     <div class="line3-p2 part2"> <div class="coté1">Nettoyage <br> moquette </div>                <div class="coté2"> </div></div>
+                </div> -->
+
+            </div>
+
+        </div>
+
+
+       <div class="parent-message-container">
+
+            <p class="message-container-title "> laissez-nous un message </p>
+
+            <div class="message-container">
+
+            
+                <button class="buttons btn-prevText" onclick="prevText()">
+                    <i class="fa-solid fa-left-long"></i>
+                </button>
+            
+                <div class="message-content" >
+                    {% for messages in messages %}
+                        <div class="message" data-index="{{ loop.index0 }}" style="display: none;"> 
+                            {{ messages.content }}
+                    </div>
+                    {% endfor %}
+                    
                 </div>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="message-container">
-
-            <button class="buttons" onclick="prevText()"><i class="fa-solid fa-left-long"></i></button>
         
-            <div class="message-content">
-                <p><strong>Cette partie contriendra des messages</strong></p>
-                <p>« Je suis un témoignage. Cliquez pour me modifier et <br>
-                    valoriser votre activité. Donnez ainsi un espace à vos <br>
-                     clients pour dire tout le bien qu'ils pensent de vous ».</p>
+                <button class="buttons btn-nextText" onclick="nextText()">
+                    <i class="fa-solid fa-right-long"></i>
+                </button>
             </div>
-    
-            <button class="buttons" onclick="nextText()"><i class="fa-solid fa-right-long"></i></button>
-        </div>
+            
+            
+       </div>
 
 
 
@@ -136,4 +165,53 @@
         </div>
 
 
+<script>
+    let currentIndex = 0 ;
+    let messages = document.querySelectorAll(".message") ;
+    let TotalMessage = messages.length ;
+
+    let btnprevText = document.querySelector(".btn-prevText");
+    let btnnextText = document.querySelector(".btn-nextText");
+
+      
+
+    function showMessage(index){
+        messages.forEach(msg => msg.style.display ="none") ;
+        messages[index].style.display="block" ;
+
+        btnprevText.disabled = index === currentIndex < 0 ;
+        btnnextText.disabled = index === currentIndex -1 ;
+
+
+    }
+
+
+    function nextText(){
+        if ( currentIndex < TotalMessage -1 ){
+            currentIndex++ ;
+        }
+        showMessage(currentIndex) ;
+    }
+
+    function prevText(){
+        if ( currentIndex > 0){
+            currentIndex--  ;
+        }
+        showMessage(currentIndex) ;
+    }
+
+    showMessage(currentIndex);
+
+
+    // Défilement automatique toutes les 3 secondes
+    let autoScroll = setInterval(nextText, 3000);
+
+    // Pause du défilement automatique lorsqu'on clique sur un bouton
+    document.querySelectorAll(".buttons").forEach(button => {
+        button.addEventListener("click", () => {
+            clearInterval(autoScroll);
+            autoScroll = setInterval(nextText, 3000); // Relance après interaction
+        });
+    });
+</script>
 {% endblock %}

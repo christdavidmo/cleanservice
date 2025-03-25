@@ -31,22 +31,29 @@
 
 
 <div class="container-service-card">
+    
+    {% for service in services %}
+    
     <div class="service-card">
+        
         <div class="service-image card-1-image" ></div>
-        <p class="service-title">Service de nettoyage</p>
+        
+        <p class="service-title"> {{ service.nameService }}</p>
             <p class="service-info">
                 ⏳ HEURE :<span class="heure"> 3 H</span>   
             </p>
 
             <p class="service-prix">
-            💰 PRIX : <span class="prix">80 000 Fcfa</span>
+            💰 PRIX : <span class="prix">{{ service.priceService }}</span>
             </p>
 
         <!-- 💰 PRIX ⏳ HEURE : -->
         <button onclick="GoToReserve(this)" class="service-card-button">Réserver</button>
+
     </div>
 
-    <div class="service-card">
+    {% endfor %}
+    <!-- <div class="service-card">
         <div class="service-image card-2-image" ></div>
         <p class="service-title">Service de repassage</p>
         <p class="service-info">
@@ -57,9 +64,9 @@
         💰 PRIX : <span class="prix">80 000 Fcfa</span>
         </p>
         <button onclick="GoToReserve(this)" class="service-card-button">Réserver</button>
-    </div>
+    </div> -->
 
-    <div class="service-card">
+    <!-- <div class="service-card">
         <div class="service-image card-2-image" ></div>
         <p class="service-title">Nettoyage avant/après déménagement</p>
         <p class="service-info"> ⏳ HEURE :<span class="heure"> 3 H</span>    </p>
@@ -68,10 +75,10 @@
         💰 PRIX : <span class="prix">80 000 Fcfa</span>
         </p>
         <button onclick="GoToReserve(this)" class="service-card-button">Réserver</button>
-    </div>
+    </div> -->
 
 
-    <div class="service-card">
+    <!-- <div class="service-card">
         <div class="service-image card-2-image" ></div>
         <p class="service-title">Nettoyage de moquette</p>
         <p class="service-info">
@@ -82,9 +89,9 @@
         💰 PRIX : <span class="prix">80 000 Fcfa</span>
         </p>
         <button onclick="GoToReserve(this)" class="service-card-button">Réserver</button>
-    </div>
+    </div> -->
 
-    <div class="service-card">
+    <!-- <div class="service-card">
         <div class="service-image card-2-image" ></div>
         <p class="service-title">Nettoyage de fenêtres</p>
         <p class="service-info">
@@ -95,7 +102,7 @@
         💰 PRIX : <span class="prix">80 000 Fcfa</span>
         </p>
         <button onclick="GoToReserve(this)" class="service-card-button">Réserver</button>
-    </div>
+    </div> -->
 
 
 </div>

@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container-gestion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+
+.card{
+    width: 300px;
+    height: 25vh;
+    border-radius: 5px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card-1{
+    background-color: rgb(11, 14, 99);
+}
+.card-2{
+    background-color: rgb(119, 23, 23);
+}
+.card-3{
+    background-color: rgb(18, 44, 142);
+}
+.card-4{
+    background-color: rgb(174, 167, 26);
+}

@@ -1,0 +1,21 @@
+{% extends "layouts/baseAdmin.html" %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static',filename ='css/admin/gestion.css')}}">
+{% endblock %}
+
+
+
+{% block content%}
+
+<h1> vous etes dans la gestion </h1>
+
+ <div class="container-gestion">
+    <div class="card-1 card"> Gestion des services</div>
+    <div class="card-2 card"> Gestion des faqs</div>
+
+    <div class="card-3 card"> card3</div>
+    <div class="card-4 card"> card4</div>
+ </div>
+{% endblock %}

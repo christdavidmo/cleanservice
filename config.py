@@ -10,7 +10,7 @@ class Config :
 
   
     SQLALCHEMY_DATABASE_URI = "postgresql://cleanservicedb_user:12ZIxEnc3Qqa8bUpBUApfHuaKe1TXNY4@dpg-cv8489tds78s73cso6k0-a/cleanservicedb"
-    # SQLALCHEMY_DATABASE_URI = "postgresql://postgres:1234@localhost:5432/cleanServiceDb"
+    # SQLALCHEMY_DATABASE_URI = "postgresql://postgres:1234@localhost:5432/cleanservicedb"
 
 
 

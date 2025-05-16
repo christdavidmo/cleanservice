@@ -1,0 +1,59 @@
+{% extends "layouts/baseAdmin.html" %}
+
+{% block content %}
+<h2>Gérer les raisons du "Pourquoi nous ?"</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Raison</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in reasons %}
+        <tr>
+            <td>{{ r.id }}</td>
+            <td>{{ r.reason }}</td>
+            <td>
+                <button onclick="showEditForm('{{ r.id }}', '{{ r.reason }}')">Modifier</button>
+                <form method="POST" action="{{ url_for('main.supprimer_why_us', id=r.id) }}" style="display:inline;">
+                    <button type="submit">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<hr>
+
+<h3>Ajouter une nouvelle raison</h3>
+<form method="POST" action="{{ url_for('main.ajouter_why_us') }}">
+    <textarea name="reason" required></textarea><br>
+    <button type="submit">Ajouter</button>
+</form>
+
+<!-- formulaire de modification -->
+<div id="edit-form" style="display:none;">
+    <form method="POST" action="{{ url_for('main.modifier_why_us') }}">
+        <input type="hidden" name="id" id="edit-id">
+        <textarea name="reason" id="edit-reason" required></textarea><br>
+        <button type="submit">Enregistrer</button>
+        <button type="button" onclick="hideEditForm()">Annuler</button>
+    </form>
+</div>
+
+<script>
+    function showEditForm(id, reason) {
+        document.getElementById("edit-id").value = id;
+        document.getElementById("edit-reason").value = reason;
+        document.getElementById("edit-form").style.display = "block";
+    }
+
+    function hideEditForm() {
+        document.getElementById("edit-form").style.display = "none";
+    }
+</script>
+{% endblock %}

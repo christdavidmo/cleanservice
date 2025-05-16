@@ -12,10 +12,23 @@
 <h1> vous etes dans la gestion </h1>
 
  <div class="container-gestion">
-    <div class="card-1 card"> Gestion des services</div>
-    <div class="card-2 card"> Gestion des faqs</div>
+   
+   <div class="card-1 card">
+         <a href="{{ url_for('main.GestionDetailsAdmin') }}">  
+            Gestion des services
+         </a>  
+   </div>
+    
+    
+      <div class="card-2 card"> 
+         <a href="{{ url_for('main.gestion_faq') }}">
+            Gestion des faqs</a> 
+      </div>
 
-    <div class="card-3 card"> card3</div>
+   <div class="card-3 card"> 
+      <a href="{{ url_for('main.dashboard_admin') }}"> Contenu</a>
+   </div>
+
     <div class="card-4 card"> card4</div>
  </div>
 {% endblock %}

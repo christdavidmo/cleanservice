@@ -10,37 +10,18 @@
 
 <div class="container-text-and-image">
 
-    <div class="container-text">
-        
-        <div class="container-text-1">
-            
-            <p class="container-text-1-1"> À propos</p>
-            <p class="container-text-1-2">
-                Nous ne partons que <br>
-                lorsque ça brille
-            </p>
-            
-        </div>
-
-        <div class="container-text-2">
-            Paragraphe. Cliquez ici pour ajouter votre propre texte. Cliquez <br>
-            sur « Modifier Texte » ou double-cliquez ici pour ajouter votre  <br>
-            contenu et personnaliser les polices. Déplacez-moi où vous le <br>
-            souhaitez sur votre page. C'est l'espace idéal pour raconter <br>
-            une histoire. Présentez votre entreprise, vos services et vos équipes.
-
-            <br>
-            <br>
-
-            C'est l'espace idéal pour présenter votre entreprise, vos services <br>
-            et vos équipes en détails. Présentez votre équipe et les services  <br>
-            proposés. Racontez l'histoire de votre entreprise et la raison pour  <br>
-            laquelle elle a été crée. Expliquez à vos visiteurs vos motivations, <br>
-             vos objectifs et soulignez vos avantages par rapport à vos concurrents.  <br>
-             Démarquez-vous et captivez l'attention de vos visiteurs.
-
+   
+    <div class="full-screen-background">
+        <div class="container-text">
+            <div class="container-text-wrapper"> 
+                {% for content in conts %}
+                    <p class="container-text-1-1">{{ content.paragraph }}</p>
+                {% endfor %}
+            </div>
         </div>
     </div>
+    
+
 
     <div class="container-text-background-image"></div>
 </div>

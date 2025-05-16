@@ -1,0 +1,277 @@
+{% extends "layouts/baseAdmin.html" %}
+
+{% block stylesheets %}
+<style>
+    h2{
+        text-align: center;
+        color: rgb(15, 147, 254);
+        text-transform: uppercase;
+    }
+
+    .container-button-add{
+        text-align: center;
+        margin: 15px 0;
+    }
+    .container-button-add button{
+        padding: 10px 20px;
+        font-size: 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(15, 147, 254);
+        color: white;
+        cursor: pointer;
+    }
+    .container-button-add button:hover{
+        background-color: green; 
+    }
+
+
+
+
+    .container-tab {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;  /* Espace sur les côtés */
+        box-sizing: border-box;
+    }
+
+    .container-tab table {
+        border-collapse: collapse;
+        width: 50%;
+        text-align: center;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .container-tab table th, .container-tab table td {
+        border: 1px solid #ccc;
+        padding: 12px 10px;
+        font-size: 16px;
+        word-break: break-word;
+    }
+
+    .container-tab table th {
+        color: white;
+        font-weight: bold;
+        background-color: rgb(15, 147, 254);
+    }
+
+
+
+
+
+    .container-add-form{
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        position: fixed;
+        background-color: rgb(0, 0, 0,0.4);
+        justify-content: center;
+        align-items: center;
+    }
+    .container-add-form .modal-content{
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        position: relative;
+        min-width: 300px;
+    }
+    .container-add-form textarea{
+        width: 80%;
+        height: 150px;
+        font-size: 18px;
+        padding: 10px;
+        resize: vertical;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .container-add-form .btn{
+        margin: 5px 0;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .container-add-form .btn-add{
+        background-color: rgb(15, 147, 254);   
+    }
+
+    .container-add-form .btn-cancel{
+        background-color: red;
+    }
+
+
+
+
+
+
+    .container-edit-form{
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        position: fixed;
+        background-color: rgb(0, 0, 0,0.4);
+        justify-content: center;
+        align-items: center;
+    }
+    .container-edit-form .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        position: relative;
+        min-width: 300px;
+    }
+    .container-edit-form textarea{
+        width: 80%;
+        height: 150px;
+        font-size: 18px;
+        padding: 10px;
+        resize: vertical;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .container-edit-form .btn{
+        margin: 5px 0;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .container-edit-form .btn-save{
+        background-color: rgb(15, 147, 254);   
+    }
+
+    .container-edit-form .btn-cancel{
+        background-color: red;
+    }
+
+
+    @media only screen and (max-width: 768px){
+        h2{
+            margin: 30px 0;
+        }
+
+        .container-button-add button{
+            font-size: 20px;
+        }
+
+        .container-tab {
+            display: block; /* annule flex qui réduit */
+            width: 100%;
+            overflow-x: auto; /* permet de scroller horizontalement */
+        }
+
+        .container-tab table {
+            width: 100%; /* Prend toute la largeur dispo */
+            min-width: 300px; /* Evite que le tableau soit trop petit */
+        }
+
+        .container-tab table th{
+            font-size: 13px;
+            padding: 10px 8px;
+           
+        }
+        .container-tab table td{
+            font-size: 13px;
+            padding: 10px 8px;
+        }
+        
+    }
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+<h2>Gérer les raisons du "Pourquoi nous ?"</h2>
+
+<div class="container-button-add"> 
+    <button type="button" onclick="showAddForm()"> Ajouter une nouvelle raison</button>
+</div>
+
+<div class="container-tab">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Raison</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in reasons %}
+            <tr>
+                <td>{{ r.id }}</td>
+                <td>{{ r.reason }}</td>
+                <td>
+                    <button type="button" onclick="showEditForm(this)" data-id="{{ r.id }}" data-reason="{{ r.reason | escape }}">Modifier</button>
+                    <form method="POST" action="{{ url_for('main.supprimer_why_us', id=r.id) }}" style="display:inline;">
+                        <button type="submit">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+  
+
+    <!-- formulaire d'ajout -->
+    <div class="container-add-form" id="add-form" onclick="CloseAddForm()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3>Ajouter une nouvelle raison</h3>
+            <form method="POST" action="{{ url_for('main.ajouter_why_us') }}">
+                <textarea name="reason" required></textarea><br>
+                <button class="btn btn-add" type="submit">Ajouter</button>
+                <button class="btn btn-cancel" type="button" onclick="CloseAddForm()">Annuler</button>
+            </form>
+        </div>
+    </div>
+    <!-- formulaire d'ajout -->
+
+
+    <!-- formulaire de modification -->
+    <div class="container-edit-form" id="edit-form" onclick="hideEditForm()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3>Modifier la raison</h3>
+            <form method="POST" action="{{ url_for('main.modifier_why_us') }}">
+                <input type="hidden" name="id" id="edit-id">
+                <textarea name="reason" id="edit-reason" required></textarea><br>
+                <button class="btn btn-save" type="submit">Enregistrer</button>
+                <button class="btn btn-cancel" type="button" onclick="hideEditForm()">Annuler</button>
+            </form>
+        </div>
+    </div>
+    <!-- formulaire de modification -->
+
+<script>
+    
+    function showAddForm(){ document.getElementById('add-form').style.display ='flex';}
+    function CloseAddForm(){document.getElementById('add-form').style.display ='none';}
+
+    function showEditForm(button) {
+        const id = button.getAttribute('data-id');
+        const reason = button.getAttribute('data-reason');
+        document.getElementById("edit-id").value = id;
+        document.getElementById("edit-reason").value = reason;
+        document.getElementById("edit-form").style.display = 'flex';
+    }
+    
+
+    function hideEditForm() {document.getElementById("edit-form").style.display = 'none';}
+</script>
+{% endblock %}

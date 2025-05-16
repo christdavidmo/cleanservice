@@ -1,0 +1,40 @@
+{% extends "layouts/baseAdmin.html" %}
+
+{% block content %}
+<div class="admin-section">
+    <div class="admin-card">
+        <h2>Gestion des Liens Réseaux Sociaux</h2>
+        
+        <!-- Formulaire d'ajout d'un lien -->
+        <form action="{{ url_for('main.ajouter_reseau') }}" method="POST">
+            <label for="lien">Lien du Réseau Social (Instagram, Facebook, WhatsApp, etc.):</label>
+            <input type="text" id="lien" name="lien" required><br>
+
+            <button type="submit" class="btn">Ajouter Lien</button>
+        </form>
+    </div>
+
+    <div class="admin-card">
+        <h2>Liste des Liens des Réseaux Sociaux</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Lien</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reseau in reseaux %}
+                <tr>
+                    <td>{{ reseau.lien }}</td>
+                    <td>
+                        <!-- Bouton Supprimer -->
+                        <a href="{{ url_for('main.supprimer_reseau', id=reseau.id) }}" class="btn" onclick="return confirm('Voulez-vous vraiment supprimer ce lien ?')">Supprimer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

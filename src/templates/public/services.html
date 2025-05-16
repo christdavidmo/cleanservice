@@ -9,22 +9,13 @@
 {% block content %}
 
 
-<div class="container-text">
-
-    <div class="container-text-1">
-        <p class="container-text-1-1">Services</p>
-        <p class="container-text-1-2">Pour nous, la propreté  <br> doit être immaculée</p>
-
-    </div>
-
-    <div class="container-text-2">
-        Paragraphe. Cliquez ici pour ajouter votre propre texte. Cliquez <br>
-        sur « Modifier Texte » ou double-cliquez ici pour ajouter votre <br>
-        contenu et personnaliser les polices. Déplacez-moi où vous le <br>
-        souhaitez sur votre page. C'est l'espace idéal pour raconter une <br>
-        histoire. Présentez votre entreprise, vos services et vos <br>
-        équipes. Paragraphe. Cliquez ici pour ajouter votre propre <br>
-        texte. Présentez-vous et votre entreprise.
+<div class="full-screen-background">
+    <div class="container-text">
+        <div class="container-text-wrapper"> 
+            {% for content in servcontents %}
+                <p class="container-text-1-1">{{ content.paragraph }}</p>
+            {% endfor %}
+        </div>
     </div>
 </div>
 

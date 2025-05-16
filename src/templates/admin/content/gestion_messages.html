@@ -1,0 +1,160 @@
+{% extends "layouts/baseAdmin.html" %}
+
+{% block stylesheets %}
+<style>
+    .container-tab {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px; /* marge latérale */
+        box-sizing: border-box;
+    }
+
+    .container-tab table {
+        border-collapse: collapse;
+        width: 60%;  /* plus large que 50% pour les messages */
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .container-tab table th,
+    .container-tab table td {
+        border: 1px solid #ccc;
+        padding: 12px 10px;
+        text-align: center;
+        word-break: break-word;
+    }
+
+    .container-tab table th {
+        background-color: rgb(15, 147, 254);
+        color: white;
+        font-weight: bold;
+    }
+
+
+
+
+    .container-edit-message{
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        position: fixed;
+        background-color: rgb(0, 0, 0,0.5);
+        justify-content: center;
+        align-items: center;
+    }
+    .container-edit-message .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        position: relative;
+        min-width: 300px;
+    }
+    .container-edit-message textarea{
+        width: 80%;
+        height: 150px;
+        font-size: 18px;
+        padding: 10px;
+        resize: vertical;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .container-edit-message .btn{
+        margin: 5px 0;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .container-edit-message .btn-save{
+        background-color: rgb(15, 147, 254);   
+    }
+
+    .container-edit-message .btn-cancel{
+        background-color: red;
+    }
+
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+        .container-tab {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .container-tab table {
+            width: 100%;
+            min-width: 400px;  /* minimum pour lisibilité */
+        }
+
+        .container-tab table th,
+        .container-tab table td {
+            padding: 10px 8px;
+            font-size: 13px;
+        }
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<h2 style="margin:20px; ">Gestion des messages clients</h2>
+
+<!-- Formulaire d'ajout -->
+<!-- <form method="POST" action="{{ url_for('main.ajouter_message') }}" style="margin: 20px;">
+    <textarea name="content" rows="3" placeholder="Nouveau message client..." required style="width: 50%;"></textarea>
+    <button type="submit" class="btn">Ajouter</button>
+</form> -->
+
+<!-- Tableau des messages -->
+<div class="container-tab">
+    <table border="1" cellpadding="10" style="margin: 20px;">
+        <tr>
+            <th>ID</th>
+            <th>Contenu Du Message </th>
+            <th>Actions</th>
+        </tr>
+        {% for message in messages %}
+        <tr>
+            <td>{{ message.id }}</td>
+            <td>{{ message.content }}</td>
+            <td>
+                <form action="{{ url_for('main.supprimer_message', message_id=message.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+                <button onclick="ouvrirEdition('{{ message.id }}','{{ message.content | escape }}')" class="btn btn-warning">Modifier</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<!-- Modal d'édition -->
+<div class="container-edit-message" id="editModal" onclick="CloseouvrirEdition()"  >
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <form method="POST" action="{{ url_for('main.modifier_message') }}">
+            <input type="hidden" name="message_id" id="editMessageId">
+            <textarea name="new_content" id="editMessageContent" rows="4" style="width:100%;"></textarea><br>
+            <button type="submit" class="btn btn-save">Enregistrer</button>
+            <button type="button" class="btn btn-cancel" onclick="CloseouvrirEdition()">Annuler</button>
+        </form>
+    </div>
+</div>
+
+<script>
+function ouvrirEdition(id, content) {
+    document.getElementById('editMessageId').value = id;
+    document.getElementById('editMessageContent').value = content;
+    document.getElementById('editModal').style.display = 'flex';
+}
+
+function CloseouvrirEdition(){ document.getElementById('editModal').style.display='none'}
+</script>
+{% endblock %}

@@ -1,0 +1,234 @@
+{% extends "layouts/baseAdmin.html" %}
+
+
+{% block stylesheets %}
+<!-- <link rel="stylesheet" href="{{ url_for('static',filename ='css/admin/gestion.css')}}"> -->
+
+<style>
+    .container-table{
+        margin: 40px  0;
+    }
+    table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 70%;
+        text-align: center;
+    }
+
+    th, td {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    img {
+        max-width: 100px;
+        height: auto;
+    }
+
+    .action-btn{
+        padding: 6px 12px;
+        margin: 2px;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .edit-btn { background-color: #007bff; }
+    .delete-btn { background-color: #dc3545; }
+    .suspend-btn { background-color: #fd7e14; }
+
+
+    .modal-overlay{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgb(0, 0, 0,0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
+
+    .modal-content{
+        background-color: white;
+        padding: 30px;
+        width: 500px;
+        border-radius: 5px;
+    }
+
+    .modal-content form {
+        display: flex;
+       flex-direction: column;
+       
+    }
+
+    .modal-content input{
+        margin: 10px 0;
+    }
+    .modal-content button {
+        margin: 5px 0;
+    }
+    .modal-content #edit-serviceName{padding: 20px 10px;
+    }
+    .modal-content #edit-priceService{ padding: 20px 20px ;}
+
+
+
+
+
+    .modal-suppression{
+        display: none;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background-color: rgb(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content-suppression{
+        background-color: white;
+        border-radius: 5px;
+        padding: 30px;
+        width: 400px;
+    }
+
+    .modal-content-suppression form {
+        text-align: center;
+    }
+    .btn-content-yes{
+        background-color: red;
+        border: solid 1PX red;
+    }
+    .btn-content-no{
+        background-color: rgb(103, 154, 222);
+        border: solid 1PX rgb(103, 154, 222);
+    }
+    .btn-content-yes,.btn-content-no{
+        font-size: 25px;
+        border-radius: 5px;
+        color: white;
+        padding: 6px 10px;
+    }
+    .btn-content-yes:hover,.btn-content-no:hover{
+        box-shadow: 0 0 2px 2px rgba(86, 85, 85, 0.9);
+    }
+
+   
+</style>
+
+{% endblock %}
+
+
+
+{% block content%}
+
+<h1>  </h1>
+
+   
+    <div class="container-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom du service</th>
+                    <th>Prix</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for service in services %}
+                <tr>
+                    <td>{{ service.id }}</td>
+                    <td>{{ service.nameService }}</td>
+                    <td>{{ service.priceService }}</td>
+                    <td>
+                        <img src="{{ url_for('static', filename=service.imageservice.replace('\\', '/').lstrip('/')) }}" alt="image">
+                    </td>
+                    <td>
+                        <button class="action-btn edit-btn" onclick = "showEditForm('{{service.id}}','{{ service.nameService }}','{{ service.priceService }}')">Modifier</button>
+                        <button class="action-btn delete-btn" onclick="confForm('{{service.id}}')">Supprimer</button>
+                        <button class="action-btn suspend-btn">Suspendre</button>
+                    </td>
+                    
+    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+
+    <!--  Formulaire modification  cachée -->
+    <div id="form-mofication-service" class="modal-overlay" onclick="hideEditForm()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <form method="POST" action="{{url_for('main.modifier_service')}}">
+                <input type="hidden" id="edit-id" name="id">
+                <input type="text" id="edit-serviceName" name="nameService" >
+                <input type="text" id="edit-priceService" name="priceService" >
+                <button type="submit" class="action-btn edit-btn">Enregistrer</button>
+                <button type="button" class="action-btn suspend-btn" onclick="hideEditForm()">Annuler</button>
+            </form>
+        </div>
+    </div>
+    <!--  Formulaire modification cachée -->
+
+
+
+    <!--  Formulaire suppression cachée -->
+      <div id="form-suppression-service" class="modal-suppression" onclick="hideConfirForm()" >
+            <div class="modal-content-suppression" onclick="event.stopPropagation() ">
+                <form method="POST" id="delete-form" action=""> 
+                    <input type="hidden" name="id" id="delete-id">
+
+                    <p> Voulez-vous vraiment supprimer ce service ?</p>
+                    <button type="submit" class="btn-content-yes">oui</button>
+                    <button type="button" class="btn-content-no" onclick="hideConfirForm()">non</button>
+
+                </form>
+            </div>
+      </div>
+    <!--  Formulaire suppression cachée -->
+
+
+    <script>
+
+        // === modification ===
+       function showEditForm(id , Name, Prix){
+            document.getElementById('edit-id').value = id ;
+            document.getElementById('edit-serviceName').value = Name ;
+            document.getElementById('edit-priceService').value = Prix ;
+            document.getElementById('form-mofication-service').style.display ='flex';
+       }
+       function hideEditForm(){
+        document.getElementById('form-mofication-service').style.display ='none';
+       }
+
+
+       // ==== suppression ====  
+       function confForm(id){
+        document.getElementById('form-suppression-service').style.display = 'flex' ;
+        document.getElementById('delete-id').value = id;
+
+        // mettre à jour l'URL de l'action si tu veux une URL dynamique
+        document.getElementById('delete-form').action = "/admin/gestion/service/supprimer";
+       }
+       function hideConfirForm(){
+        document.getElementById('form-suppression-service').style.display ='none';
+       }
+
+    </script>
+
+ 
+{% endblock %}

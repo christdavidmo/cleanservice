@@ -1,0 +1,200 @@
+{% extends "layouts/baseAdmin.html" %}
+
+{% block stylesheets%}
+<style>
+    .container-table{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 50px 0;
+    }
+
+    .container-table table{
+        border-collapse: collapse;
+        width: 70%;
+        text-align: center;
+    }
+
+    .container-table table th{
+        background-color: #f2f2f2;
+        font-weight: bolder;
+        text-transform: capitalize;
+    }
+    .container-table table td{
+        background-color: #f2f2f2;
+    }
+    .container-table table th,td{
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+    }
+    table .btn-edit{
+        background-color: rgb(231, 209, 15);
+        border:  none;
+        padding: 5px;
+        font-weight: bold;
+        border-radius: 3px;
+        cursor: pointer;
+        box-shadow:  0 0 5px rgb(0,0 , 0 ,0.2);
+    }
+
+
+    .modal_modification{
+        display: none;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        position: fixed;
+        background-color: rgb(0,0 , 0 ,0.6);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content{
+        width: 400px;
+        background-color: rgb(186, 216, 216);
+        padding: 40px;
+        border-radius: 5px;
+    }
+
+    .modal-content textarea{
+        width: 90%;
+        padding: 30px;
+        resize: vertical;
+    }
+
+
+    .modal_reponse{
+        display: none;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        background-color: rgb(0,0 , 0 ,0.4);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .add-modal-content{
+        width: 400px;
+        background-color: rgb(186, 216, 216);
+        padding: 40px;
+        border-radius: 5px;
+    
+    }
+    .add-modal-content textarea{
+        width: 90%;
+        padding: 30px;
+        resize: vertical;
+    }
+</style>
+{% endblock  %}
+
+
+{% block content %}
+
+<div class="container-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Intitulé</th>
+                <th>Frequence</th>
+                <th>Reponse</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for question in questions %}
+                <tr>
+                    <td>{{ question.question }}</td>
+                    <td>{{ question.frequency  }}</td>
+
+                    
+                        <td>
+                            {% if question.answers %}
+                                <ul>
+                                    {% for answer in question.answers %}
+                                        <li>
+                                            {{ answer.answer }}
+                                            <button class="btn btn-edit" onclick="openEditModal('{{ answer.id }}', `{{ answer.answer|escape }}`)">
+                                                Modifier
+                                            </button>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <em> Pas encore de reponse </em>
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if question.answers|length == 0 %}
+                                <button class="btn btn-edit" onclick="openAddModal('{{ question.id }}')">
+                                    Répondre
+                                </button>
+                            {% endif %}
+                            <button class="btn btn-cancel">Supprimer</button>
+                        </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+    <!-- === modal modification reponse  -->
+     <div id="edit-reponse-modal" class="modal_modification" onclick="closeEditModal()" >
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <form  method="POST" action="{{ url_for('main.modifier_reponse') }}">
+                <input type="hidden" name="answer_id" id="edit-answer-id">
+                <label for="new_reponse">Modifier la reponse </label> <br>
+                <textarea name="new_reponse" id="edit-answer-text" rows="4" required></textarea>
+
+                <button type="submit" class="btn btn-edit">Enregistrer</button>
+                <button type="button" class="btn btn-cancel" onclick="closeEditModal()">Annuler</button>
+            </form>
+        </div>
+     </div>
+    <!-- === modal modification reponse  -->
+
+
+
+    <!-- === reponse  d'une question  -->
+     <div id="add-reponse-modal" class="modal_reponse" onclick="closeAddModal()">
+        <div class="add-modal-content" onclick="event.stopPropagation()">
+            
+            <form method="POST" action="{{ url_for('main.ajouter_reponse') }}">
+                <input type="hidden" name="question_id" id="add-question-id">
+            <label for="new_answer">Une réponse :</label><br>
+            <textarea name="new_answer" id="new-answer-text" rows="4" placeholder="Laisser une reponse à cette question  içi" required></textarea><br><br>
+            
+            <button type="submit" class="btn btn-edit">Enregistrer</button>
+            <button type="button" class="btn btn-cancel" onclick="closeAddModal()">Annuler</button>
+
+            </form>
+        </div>
+     </div>
+    <!-- === reponse  d'une question  -->
+
+
+<script>
+
+
+    function openEditModal(answerId ,currentText){
+            document.getElementById('edit-answer-id').value = answerId;
+            document.getElementById('edit-answer-text').value = currentText ;
+            document.getElementById('edit-reponse-modal').style.display ='flex';
+    }
+    function closeEditModal(){ document.getElementById('edit-reponse-modal').style.display = 'none' ;}
+
+
+    function openAddModal(id){
+        document.getElementById('add-question-id').value = id ;
+        document.getElementById('add-reponse-modal').style.display='flex' ;
+    }
+    function closeAddModal(){ document.getElementById('add-reponse-modal').style.display ='none' }
+</script>
+{% endblock  %}

@@ -29,10 +29,10 @@ def create_app(config_class=Config):
 
 
     # Création des tables dans la base de données
-    # with app.app_context():
-    #     print("Modèles enregistrés avant création :", db.Model.metadata.tables.keys())
-    #     db.create_all()
-    #     print("Tables créées avec succès !")
+    with app.app_context():
+        print("Modèles enregistrés avant création :", db.Model.metadata.tables.keys())
+        db.create_all()
+        print("Tables créées avec succès !")
     
     
     

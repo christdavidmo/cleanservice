@@ -1,0 +1,48 @@
+{% extends "layouts/baseAdmin.html" %}
+
+{% block content %}
+<h2 style="margin: 20px;">Contenu de la page Services</h2>
+
+<form method="POST" action="{{ url_for('main.ajouter_service_content') }}" style="margin: 20px;">
+    <textarea name="paragraph" rows="3" placeholder="Nouveau paragraphe..." required style="width: 60%;"></textarea>
+    <button type="submit" class="btn">Ajouter</button>
+</form>
+
+<table border="1" cellpadding="10" style="margin: 20px;">
+    <tr>
+        <th>ID</th>
+        <th>Paragraphe</th>
+        <th>Actions</th>
+    </tr>
+    {% for c in services %}
+    <tr>
+        <td>{{ c.id }}</td>
+        <td>{{ c.paragraph }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('main.supprimer_service_content', id=c.id) }}" style="display:inline;">
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
+            <button class="btn btn-warning" onclick="openEditModal('{{ c.id }}', `{{ c.paragraph | escape }}`)">Modifier</button>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- Modal modification -->
+<div id="editModal" style="display:none; position:fixed; top:20%; left:30%; background:#fff; padding:20px; border:1px solid #ccc;">
+    <form method="POST" action="{{ url_for('main.modifier_service_content') }}">
+        <input type="hidden" name="id" id="edit-id">
+        <textarea name="paragraph" id="edit-paragraph" rows="4" style="width:100%;"></textarea><br>
+        <button type="submit" class="btn">Enregistrer</button>
+        <button type="button" class="btn btn-danger" onclick="document.getElementById('editModal').style.display='none'">Annuler</button>
+    </form>
+</div>
+
+<script>
+function openEditModal(id, content) {
+    document.getElementById('edit-id').value = id;
+    document.getElementById('edit-paragraph').value = content;
+    document.getElementById('editModal').style.display = 'block';
+}
+</script>
+{% endblock %}

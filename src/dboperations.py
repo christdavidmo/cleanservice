@@ -5,8 +5,8 @@ from werkzeug.utils import secure_filename
 
 
 # ==== ajout d'informations ====
-def add_information_business (Email , About_us) :
-    business = Information(email = Email , about_us = About_us)
+def add_information_business (Email ) :
+    business = Information(email = Email )
     db.session.add(business)
     db.session.commit()
     return business
@@ -57,6 +57,35 @@ def Delete_Numero( Numero_Id):
         db.session.commit()
         return True 
     return False
+
+
+def add_reseau(lien):
+    reseau = Reseau(lien=lien)
+    db.session.add(reseau)
+    db.session.commit()
+    return reseau
+
+def get_all_reseaux():
+    return Reseau.query.all()
+
+def find_reseau(ID):
+    return Reseau.query.filter_by(id=ID).first()
+
+def update_reseau(ID, new_lien):
+    reseau = find_reseau(ID)
+    if reseau:
+        reseau.lien = new_lien
+        db.session.commit()
+        return reseau
+    return "Lien introuvable."
+
+def delete_reseau(ID):
+    reseau = find_reseau(ID)
+    if reseau:
+        db.session.delete(reseau)
+        db.session.commit()
+        return True
+    return "Lien introuvable."
 
 
 
@@ -144,7 +173,23 @@ def add_Service(Name_service, Prix_Service, Image_file):
     except Exception as e:
         print(f"Erreur lors de l'ajout du service : {e}")
         return None
+
+# === chercher un service via l'id ===
+def find_service_by_id(ID):
+    return Service.query.filter_by(id = ID).first()
+     
+def modification_service(service : Service , NOM : str , PRIX :float):
     
+    if service :
+        service.nameService = NOM
+        service.priceService = PRIX
+        db.session.commit()
+
+def supprimer_service(service : Service):
+    if service :
+        db.session.delete(service)
+        db.session.commit()
+
 
 
 
@@ -235,7 +280,7 @@ def add_about_us(paragraph):
 
 # == afficher tous les textes
 def get_about_us_content():
-    return AboutUsContent.query.all()
+    return AboutUsContent.query.order_by(AboutUsContent.id.asc()).all()
 
 # == trouver 
 def find_about_us(ID):
@@ -265,32 +310,102 @@ def delete_about_us(ID):
 
 
 
+# === Ajouter un paragraphe service ===
 def add_service_content(paragraph):
-    content = ServiceContent(paragraph=paragraph)
-    db.session.add(content)
+    service = ServiceContent(paragraph=paragraph)
+    db.session.add(service)
     db.session.commit()
-    return content
+    return service
 
+# === Obtenir tout le contenu service ===
+def get_all_service_content():
+    return ServiceContent.query.order_by(ServiceContent.id.asc()).all()
 
-def get_service_content():
-    return ServiceContent.query.all()
-
+# === Trouver un contenu précis ===
 def find_service_content(ID):
     return ServiceContent.query.filter_by(id=ID).first()
 
-def update_service_content(ID, nouveau_paragraph):
-    paragraph = find_service_content(ID)
-    if paragraph:
-        paragraph.paragraph = nouveau_paragraph
+# === Mettre à jour ===
+def update_service_content(ID, new_paragraph):
+    content = find_service_content(ID)
+    if content:
+        content.paragraph = new_paragraph
         db.session.commit()
-        return paragraph
-    return "Paragraphe introuvable."
+        return content
+    return "Contenu introuvable."
 
+# === Supprimer ===
 def delete_service_content(ID):
-    paragraph = find_service_content(ID)
-    if paragraph:
-        db.session.delete(paragraph)
+    content = find_service_content(ID)
+    if content:
+        db.session.delete(content)
         db.session.commit()
         return True
-    return "Paragraphe introuvable."
+    return "Contenu introuvable."
+
+
+
+
+
+
+# ======== FAQ  =========
+def get_All_Faq():
+    return FAQQuestion.query.options(db.joinedload(FAQQuestion.answers)).all()
+
+def getQuestion_frequently():
+
+    # Récupérer les 5 questions les plus fréquentes
+    questions = FAQQuestion.query.order_by(FAQQuestion.frequency.desc()).limit(5).all()
+
+    faqs = []
+    for question in questions:
+        # Récupérer la première réponse associée à la question
+        answer = FAQAnswer.query.filter_by(question_id=question.id).first()
+        faqs.append({
+            'question': question.question,
+            'answer': answer.answer if answer else 'Aucune réponse disponible'
+        })
+
+    return faqs
+# ======== FAQ  =========
+
+
+
+
+# =========== heure d'ouverture =========== 
+
+# Ajouter une heure d'ouverture
+def add_ouverture(jour, heure_ouverture, heure_fermeture):
+    horaire = Ouverture(jour=jour, heure_ouverture=heure_ouverture, heure_fermeture=heure_fermeture)
+    db.session.add(horaire)
+    db.session.commit()
+    return horaire
+
+# Obtenir tous les horaires
+def get_all_ouvertures():
+    return Ouverture.query.order_by(Ouverture.jour.asc()).all()
+
+# Trouver un horaire précis
+def find_ouverture(ID):
+    return Ouverture.query.filter_by(id=ID).first()
+
+# Mettre à jour un horaire
+def update_ouverture(ID, jour, ouverture, fermeture):
+    horaire = find_ouverture(ID)
+    if horaire:
+        horaire.jour = jour
+        horaire.heure_ouverture = ouverture
+        horaire.heure_fermeture = fermeture
+        db.session.commit()
+        return horaire
+    return "Horaire introuvable."
+
+# Supprimer un horaire
+def delete_ouverture(ID):
+    horaire = find_ouverture(ID)
+    if horaire:
+        db.session.delete(horaire)
+        db.session.commit()
+        return True
+    return "Horaire introuvable."
 

@@ -1,0 +1,58 @@
+{% extends "layouts/baseAdmin.html" %}
+
+{% block content %}
+<div class="admin-section">
+    <div class="admin-card">
+        <h2>Gestion des Horaires d'Ouverture</h2>
+        
+        <!-- Formulaire d'ajout -->
+        <form action="{{ url_for('main.ajouter_ouverture') }}" method="POST">
+            <label for="jour">Jour:</label>
+            <input type="text" id="jour" name="jour" required><br>
+
+            <label for="heure_ouverture">Heure d'ouverture:</label>
+            <input type="time" id="heure_ouverture" name="heure_ouverture" required><br>
+
+            <label for="heure_fermeture">Heure de fermeture:</label>
+            <input type="time" id="heure_fermeture" name="heure_fermeture" required><br>
+
+            <button type="submit" class="btn">Ajouter Horaire</button>
+        </form>
+    </div>
+
+    <div class="admin-card">
+        <h2>Liste des Horaires</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Jour</th>
+                    <th>Heure Ouverture</th>
+                    <th>Heure Fermeture</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ouverture in ouvertures %}
+                <tr>
+                    <td>{{ ouverture.jour }}</td>
+                    <td>{{ ouverture.heure_ouverture }}</td>
+                    <td>{{ ouverture.heure_fermeture }}</td>
+                    <td>
+                        <!-- Bouton Modifier -->
+                        <form action="{{ url_for('main.modifier_ouverture', id=ouverture.id) }}" method="POST">
+                            <input type="text" name="jour" value="{{ ouverture.jour }}" required>
+                            <input type="time" name="heure_ouverture" value="{{ ouverture.heure_ouverture }}" required>
+                            <input type="time" name="heure_fermeture" value="{{ ouverture.heure_fermeture }}" required>
+                            <button type="submit" class="btn">Modifier</button>
+                        </form>
+
+                        <!-- Bouton Supprimer -->
+                        <a href="{{ url_for('main.supprimer_ouverture', id=ouverture.id) }}" class="btn" onclick="return confirm('Voulez-vous vraiment supprimer cet horaire ?')">Supprimer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

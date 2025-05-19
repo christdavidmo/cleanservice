@@ -4,7 +4,7 @@ from flask import Flask
 # from flask_mail import Mail
 
 import os
-from config import Config  
+from ..config import Config  
 from  .extensions import db , migrate ,mail
 
 

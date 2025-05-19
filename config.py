@@ -9,7 +9,6 @@ class Config :
     basedir =  os.path.abspath(os.path.dirname(__file__))
 
   
-    # SQLALCHEMY_DATABASE_URI = "postgresql://cleanservicedb_user:12ZIxEnc3Qqa8bUpBUApfHuaKe1TXNY4@dpg-cv8489tds78s73cso6k0-a/cleanservicedb"
     
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = "postgresql://cleanservicedb_xhfy_user:djJosTe3Ok0w5smg4aFfFqm80IsLbI1f@dpg-d0jd7muuk2gs73bokjsg-a.oregon-postgres.render.com/cleanservicedb_xhfy"
